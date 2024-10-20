@@ -66,10 +66,8 @@ local function snap_to_left(c, screen_width)
     -- Get the client's new width (cycled)
     cycle_width(c, screen_width)
 
-    local new_x = screen_workarea_x(c)
-
     c:geometry {
-        x = new_x,
+        x = screen_workarea_x(c),
         y = screen_workarea_y(c),
         width = c:geometry().width,
         height = screen_workarea_height(c),
@@ -199,6 +197,33 @@ awful.keyboard.append_global_keybindings {
             }
         end
     end, { description = " Floating: snap to bottom-left corner", group = "floating-layout" }),
+
+    awful.key({ MetaKey, ControlKey }, "k", function()
+        local current_layout = awful.layout.getname(awful.layout.get(awful.screen.focused()))
+        local c = client.focus
+        if current_layout == "floating" or c.floating == true then
+            awful.placement.bottom_right(c, { honor_workarea = true })
+            c:geometry {
+                x = screen_workarea_x(c) + (screen_workarea_width(c) / 2) + combined_gap,
+                width = (screen_workarea_width(c) / 2) - combined_gap,
+                height = (screen_workarea_height(c) / 2) - combined_gap, -- Resize to adjust for the gap at the bottom
+            }
+        end
+    end, { description = " Floating: snap to bottom-right corner", group = "floating-layout" }),
+
+    awful.key({ MetaKey, ControlKey }, "l", function()
+        local current_layout = awful.layout.getname(awful.layout.get(awful.screen.focused()))
+        local c = client.focus
+        if current_layout == "floating" or c.floating == true then
+            awful.placement.top_right(c, { honor_workarea = true })
+            c:geometry {
+                x = screen_workarea_x(c) + (screen_workarea_width(c) / 2) + combined_gap,
+                y = screen_workarea_y(c),
+                width = (screen_workarea_width(c) / 2) - combined_gap,
+                height = (screen_workarea_height(c) / 2) - border, -- Resize to adjust for the gap at the bottom
+            }
+        end
+    end, { description = " Floating: snap to top-right corner", group = "floating-layout" }),
 
     awful.key({ MetaKey, ControlKey }, "a", function()
         local current_layout = awful.layout.getname(awful.layout.get(awful.screen.focused()))
