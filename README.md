@@ -18,6 +18,15 @@ git clone https://github.com/itzalak/anvil.git
 - Instructions for archlinux in [makefile](installation/linux/makefile).
 - Instructions for macOS in [makefile](installation/macos/makefile) and [readme](installation/macos/README.md).
 
+## Requirements
+
+- task (go-task for linux)
+- python
+- stow
+- zsh
+
+WIP: look into the taskfiles
+
 ## Awesomewm
 
 Take look into [awesome readme](/awesome/.config/awesome/README.md)

@@ -13,6 +13,10 @@ awful.keyboard.append_global_keybindings {
         awful.spawn(Apps.terminal)
     end, { description = "open wezterm", group = "launcher" }),
 
+    awful.key({ ControlKey }, "Return", function()
+        awful.spawn(Apps.terminal)
+    end, { description = "open wezterm (for Moonlander)", group = "launcher" }),
+
     awful.key({ MetaKey, AltKey }, "Return", function()
         awful.spawn(Apps.alternative_terminal)
     end, { description = "open urxvt", group = "launcher" }),
@@ -25,9 +29,17 @@ awful.keyboard.append_global_keybindings {
         awful.spawn(Apps.launcher, false)
     end, { description = "Open rofi app menu", group = "Menus" }),
 
+    awful.key({ ControlKey }, "space", function()
+        awful.spawn(Apps.launcher, false)
+    end, { description = "Open rofi app menu (for Moonlander)", group = "Menus" }),
+
     awful.key({ MetaKey }, "Tab", function()
         awful.spawn("rofi -theme base -modi window -show window", false)
     end, { description = "Select window to switch", group = "Menus" }),
+
+    awful.key({ ControlKey }, "Tab", function()
+        awful.spawn("rofi -theme base -modi window -show window", false)
+    end, { description = "Select window to switch (for Moonlander)", group = "Menus" }),
 
     awful.key({ MetaKey, AltKey }, "t", function()
         awful.titlebar.toggle(client.focus)
