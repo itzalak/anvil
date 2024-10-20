@@ -9,3 +9,6 @@ alias open='handlr open'
 
 # Setup Keychron
 alias k2='sudo systemctl start keychron'
+
+# Taskfile
+alias t='go-task'
