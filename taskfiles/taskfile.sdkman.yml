@@ -10,6 +10,7 @@ vars:
 tasks:
 
   assert:
+    internal: true
     cmds:
       - task: helper:assert
         vars:

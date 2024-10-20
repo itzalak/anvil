@@ -4,7 +4,7 @@ includes:
   helper: "./taskfile.helper.yml"
 
 vars:
-  RESTOW_CMD: "stow --restow --no-folding --verbose --dir={{.ROOT_DIR}} --target={{.HOME}}"
+  RESTOW_CMD: "stow --restow --verbose --dir={{.ROOT_DIR}} --target={{.HOME}}"
   DESTOW_CMD: "stow --delete --verbose --dir={{.ROOT_DIR}} --target={{.HOME}}"
 
 tasks:

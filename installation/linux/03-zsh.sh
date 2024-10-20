@@ -43,11 +43,6 @@ chsh -s "$(which zsh)"
 # Change the default shell to zsh for the root user
 sudo chsh -s "$(which zsh)"
 
-print_info "Symlinking with stow"
-
-stow --restow --verbose --dir="$HOME/anvil" --target="$HOME" zsh
-stow --restow --verbose --dir="$HOME/anvil/linux/.config" --target="$HOME/.config/zsh" zsh
-
 print_info "Zsh setup is complete"
 print_info "Reboot to enable zsh configuration"
 print_info "In case zsh does not load, try 'chsh -s /usr/bin/zsh'"

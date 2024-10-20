@@ -2,6 +2,7 @@ version: '3'
 
 includes:
   brew: "./taskfiles/taskfile.brew.yml"
+  gotask: "./taskfiles/taskfile.gotask.yml"
   helper: "./taskfiles/taskfile.helper.yml"
   linux: "./taskfiles/taskfile.linux.yml"
   macos: "./taskfiles/taskfile.macos.yml"

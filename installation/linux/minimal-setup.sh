@@ -11,50 +11,22 @@ function print_info() {
   echo -e "${GREEN}$1${RESET}"
 }
 
-# Minimal default packages to install
+# Minimal installation for dotfiles setup
 
 PKGS=(
-  base-devel
-  dkms
-  nvidia-dkms
-  nvidia-utils
-  xorg-server
-  xorg-xinit
-
   # Apps
   alacritty
-  arandr
   bat
-  bluez
-  bluez-utils
-  bluez-hid2hci
-  bottom
   fd
-  feh
-  figlet
-  firefox
-  fwupd
   fzf
   git
-  git-filter-repo
   go-task
-  handlr
-  lazygit
-  maim
-  man-db
-  neofetch
   neovim
-  networkmanager
   openssh
   ranger
   ripgrep
-  rxvt-unicode
   starship
   stow
-  tlp
-  tree
-  unzip
-  xclip
   wezterm
   zsh
 )
@@ -65,6 +37,13 @@ for PKG in "${PKGS[@]}"; do
   sudo pacman -S "$PKG" --noconfirm --needed
 done
 
+# In linux, task is called go-task, to allow it to run normally is necessary to create a symlink.
+# This might break other apps like taskwarrior
 echo
-print_info "Default packages installed successfully"
+print_info "Symlinking taskfile"
+print_info "INFO: to revert the symlink: sudo rm /usr/bin/task"
+sudo ln -s /usr/bin/go-task /usr/bin/task
+
+echo
+print_info "Minimal installation done successfully"
 echo

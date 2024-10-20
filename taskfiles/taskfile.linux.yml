@@ -6,13 +6,14 @@ tasks:
     desc: Install linux
     platforms: [ linux ]
     cmds:
-      #      - task: brew:setup
-      - task: zsh:setup
-      - task: submodules:init
-      - task: stow:awesome
-      - task: zimfw:install
-      - task: zsh:shell
-      - task: sdkman:setup
+#      - task: :gotask:setup
+#      - task: :pacman:setup
+      - task: :zsh:setup
+      - task: :submodules:init
+      - task: :stow:awesome
+      - task: :zimfw:install
+      - task: :zsh:shell
+      - task: :sdkman:setup
 
   setup-qtile:
     desc: Install linux
@@ -30,20 +31,20 @@ tasks:
     desc: Run update tasks
     platforms: [ linux ]
     cmds:
-      - task: pacman:refresh
-      - task: zimfw:refresh
+      - task: :pacman:refresh
+      - task: :zimfw:refresh
 
   restow-awesome:
     desc: Stow all awesome configuration
     platforms: [ linux ]
     cmds:
-      - task: stow:awesome
+      - task: :stow:awesome
 
   destow-awesome:
     desc: Stow all macos configuration
     platforms: [ linux ]
     cmds:
-      - task: stow:destow-awesome
+      - task: :stow:destow-awesome
 
   restow-qtile:
     desc: Stow all qtile configuration

@@ -9,19 +9,18 @@ tasks:
         vars:
           REQUIRED_TOOLS: yay
 
-#  setup:
-#    desc: Install yay and pacman packages
-#    platforms: [ linux ]
-#    cmds:
-#      - task: install
-
+  setup:
+    desc: Install yay and pacman packages
+    platforms: [ linux ]
+    cmds:
+#      - bash "{{.ROOT_DIR}}/installation/linux/minimal-setup.sh"
 
   refresh:
     desc: Upgrade and update yay and pacman packages
     internal: true
     platforms: [ linux ]
     cmds:
-      - echo "yay -Syu --noconfirm"
+      - yay -Syu --noconfirm
 
 #  install:
 #    desc: Install packages

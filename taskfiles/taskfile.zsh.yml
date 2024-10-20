@@ -11,6 +11,7 @@ tasks:
     cmds:
       - task: directories
       - task: brew
+      - task: yay
 
   directories:
     desc: Create directories for zsh configuration
@@ -34,6 +35,22 @@ tasks:
       - brew install starship
       - brew install zoxide
       - brew install zsh
+
+  yay:
+    desc: Installing zsh and minimal packages
+    platforms: [ linux ]
+    internal: true
+    cmds:
+      - task: helper:assert
+        vars:
+          REQUIRED_TOOLS: yay
+      - yay -S bat --noconfirm --needed
+      - yay -S fd --noconfirm --needed
+      - yay -S fzf --noconfirm --needed
+      - yay -S ripgrep --noconfirm --needed
+      - yay -S starship --noconfirm --needed
+      - yay -S zoxide --noconfirm --needed
+      - yay -S zsh --noconfirm --needed
 
   shell:
     desc: Changing the default shell to zsh
