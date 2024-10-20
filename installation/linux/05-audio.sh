@@ -8,6 +8,7 @@ RESET=$(tput sgr0)
 
 # Print an info message
 function print_info() {
+  echo
   echo -e "${GREEN}$1${RESET}"
 }
 
@@ -26,7 +27,6 @@ PKGS=(
 print_info "Installing audio related packages"
 
 for PKG in "${PKGS[@]}"; do
-  echo
   print_info "Installing package: $PKG"
   yay -S "$PKG" --noconfirm --needed
 done

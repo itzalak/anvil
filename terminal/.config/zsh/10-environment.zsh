@@ -28,9 +28,6 @@ alias gwa='./gradlew clean assemble'
 alias gwb='./gradlew clean build'
 alias gwsa='./gradlew :spotlessApply'
 
-# Pretty print each PATH entry on a separate line
-alias path='echo -e "${PATH//:/\\n}"'
-
 # Quick access
 export ANVIL="$HOME/foundry/anvil/"
 export CONF="$HOME/.config/"
@@ -43,3 +40,10 @@ export PATH="$HOME/foundry/anvil/bin:$PATH"
 export PATH="$HOME/foundry/anvil/anvil:$PATH"
 export PATH="$HOME/foundry/anvil/terminal/.config/decorator/scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+# Pretty print each PATH entry on a separate line
+alias path='echo -e "${PATH//:/\\n}"'
+
+# Python
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - path)"

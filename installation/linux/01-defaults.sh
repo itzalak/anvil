@@ -8,6 +8,7 @@ RESET=$(tput sgr0)
 
 # Print an info message
 function print_info() {
+  echo
   echo -e "${GREEN}$1${RESET}"
 }
 
@@ -60,7 +61,6 @@ PKGS=(
 )
 
 for PKG in "${PKGS[@]}"; do
-  echo
   print_info "INSTALLING PACKAGE: $PKG"
   sudo pacman -S "$PKG" --noconfirm --needed
 done

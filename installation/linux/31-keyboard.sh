@@ -8,6 +8,7 @@ RESET=$(tput sgr0)
 
 # Print an info message
 function print_info() {
+  echo
   echo -e "${GREEN}$1${RESET}"
 }
 

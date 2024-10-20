@@ -6,7 +6,6 @@ includes:
   helper: "./taskfiles/taskfile.helper.yml"
   linux: "./taskfiles/taskfile.linux.yml"
   macos: "./taskfiles/taskfile.macos.yml"
-  pacman: "./taskfiles/taskfile.pacman.yml"
   poetry: "./taskfiles/taskfile.poetry.yml"
   precommit: "./taskfiles/taskfile.precommit.yml"
   python: "./taskfiles/taskfile.python.yml"

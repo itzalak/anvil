@@ -19,7 +19,6 @@ tasks:
   macos:
     desc: Modify all macos configuration
     deps: [ assert ]
-    internal: true
     platforms: [ darwin ]
     cmds:
       - task: common
@@ -30,7 +29,6 @@ tasks:
   destow-macos:
     desc: Delete all macos configuration
     deps: [ assert ]
-    internal: true
     platforms: [ darwin ]
     cmds:
       - task: common
@@ -41,7 +39,6 @@ tasks:
   awesome:
     desc: Modify all awesome configuration
     deps: [ assert ]
-    internal: true
     platforms: [ linux ]
     cmds:
       - task: common
@@ -56,7 +53,6 @@ tasks:
   destow-awesome:
     desc: Delete all awesome configuration
     deps: [ assert ]
-    internal: true
     platforms: [ linux ]
     cmds:
       - task: common
@@ -68,7 +64,6 @@ tasks:
   qtile:
     desc: Modify all qtile configuration
     deps: [ assert ]
-    internal: true
     platforms: [ linux ]
     cmds:
       - task: common
@@ -83,7 +78,6 @@ tasks:
   destow-qtile:
     desc: Delete all qtile configuration
     deps: [ assert ]
-    internal: true
     platforms: [ linux ]
     cmds:
       - task: common
@@ -91,6 +85,29 @@ tasks:
           CMD: "{{.DESTOW_CMD}}"
       - "{{.DESTOW_CMD}} linux"
       - "{{.DESTOW_CMD}} qtile"
+
+  gnome:
+    desc: Modify all qtile configuration
+    deps: [ assert ]
+    platforms: [ linux ]
+    cmds:
+      - task: common
+        vars:
+          CMD: "{{.RESTOW_CMD}}"
+      - task: helper:assert
+        vars:
+          REQUIRED_TOOLS: qtile
+      - "{{.RESTOW_CMD}} linux"
+
+  destow-gnome:
+    desc: Delete all qtile configuration
+    deps: [ assert ]
+    platforms: [ linux ]
+    cmds:
+      - task: common
+        vars:
+          CMD: "{{.DESTOW_CMD}}"
+      - "{{.DESTOW_CMD}} linux"
 
   common:
     desc: Modify common configuration

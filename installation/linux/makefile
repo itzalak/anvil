@@ -37,7 +37,7 @@ yay:
 .PHONY: zsh
 zsh:
 	@$(call warn, installing zsh)
-	./03-zsh.sh
+	./legacy/03-zsh.sh
 	@$(call log, zsh)
 
 .PHONY: wireless-bluetooth
@@ -55,7 +55,7 @@ audio:
 .PHONY: stow
 stow:
 	@$(call warn, setting configuration with stow)
-	./06-stow-config.sh
+	./legacy/06-stow.sh
 	@$(call log, stow)
 
 .PHONY: productivity
@@ -67,13 +67,13 @@ productivity:
 .PHONY: sdkman
 sdkman:
 	@$(call warn, sdkman)
-	./21-sdkman.sh
+	./legacy/21-sdkman.sh
 	@$(call log, sdkman)
 
 .PHONY: neovim
 neovim:
 	@$(call warn, installing and initializing neovim submodule)
-	./22-neovim.sh
+	./legacy/22-neovim.sh
 	@$(call log, neovim)
 
 .PHONY: development
@@ -85,7 +85,7 @@ development:
 .PHONY: games
 games:
 	@$(call warn, installing games)
-	./24-gnome-gaming.sh
+	./53-gnome-gaming.sh
 	@$(call log, games)
 
 .PHONY: keyboard
@@ -99,9 +99,3 @@ mouse:
 	@$(call warn, setting up mouse config)
 	./32-mouse.sh
 	@$(call log, mouse)
-
-.PHONY: extras
-extras:
-	@$(call, warn, installing extras)
-	./90-extras.sh
-	@$(call log, extras)

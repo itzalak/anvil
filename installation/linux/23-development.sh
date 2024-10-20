@@ -8,6 +8,7 @@ RESET=$(tput sgr0)
 
 # Print an info message
 function print_info() {
+  echo
   echo -e "${GREEN}$1${RESET}"
 }
 
@@ -33,9 +34,9 @@ PKGS=(
 
   # Python
   python
+  pyenv
   python-pip
   python-pipx
-  python-virtualenv
   python-pipenv
   python-pynvim
   python-setuptools
@@ -43,38 +44,21 @@ PKGS=(
   python-ruff
   python-pre-commit
   python-cookiecutter
-  pip-tools
 
   # Misc
   cargo
+  npm
   jq
   shellcheck
   yq
   slack-desktop
 )
 
-PIPX=(
-  commitizen
-  poetry
-)
-
 print_info "Installing Development required packages"
 
 for PKG in "${PKGS[@]}"; do
-  echo
   print_info "Installing package: $PKG"
   yay -S "$PKG" --noconfirm --needed
 done
-
-for PKG in "${PIPX[@]}"; do
-  echo
-  print_info "INSTALLING PIPX PACKAGE: $PKG"
-  pipx install "$PKG"
-done
-
-pipx ensurepath
-
-print_info "Inject poetry plugin export"
-pipx inject poetry poetry-plugin-export
 
 print_info "Development setup is complete"

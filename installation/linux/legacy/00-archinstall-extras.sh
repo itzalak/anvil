@@ -18,7 +18,6 @@ PKGS=(
 )
 
 for PKG in "${PKGS[@]}"; do
-  echo
   echo "INSTALLING PACKAGE: $PKG"
   sudo pacman -S "$PKG" --noconfirm --needed
 done

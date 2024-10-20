@@ -8,6 +8,7 @@ RESET=$(tput sgr0)
 
 # Print an info message
 function print_info() {
+  echo
   echo -e "${GREEN}$1${RESET}"
 }
 
@@ -29,13 +30,12 @@ PKGS=(
 print_info "Installing qtile required packages"
 
 for PKG in "${PKGS[@]}"; do
-  echo
   print_info "Installing package: $PKG"
   sudo pacman -S "$PKG" --noconfirm --needed
 done
 
-print_info "Symlinking with stow"
-
-stow --restow --verbose --dir="$HOME/anvil/linux" --target="$HOME" qtile
+#print_info "Symlinking with stow"
+#
+#stow --restow --verbose --dir="$HOME/anvil/linux" --target="$HOME" qtile
 
 print_info "Qtile setup is complete"

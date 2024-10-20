@@ -8,6 +8,7 @@ RESET=$(tput sgr0)
 
 # Print an info message
 function print_info() {
+  echo
   echo -e "${GREEN}$1${RESET}"
 }
 
@@ -24,5 +25,5 @@ git clone https://aur.archlinux.org/yay.git "$YAY_DIR"
 cd "$YAY_DIR" && makepkg -si
 
 echo
-print_info "Yay setup sucessfully"
+print_info "Yay setup successfully"
 echo

@@ -8,6 +8,7 @@ RESET=$(tput sgr0)
 
 # Print an info message
 function print_info() {
+  echo
   echo -e "${GREEN}$1${RESET}"
 }
 
@@ -28,7 +29,6 @@ PKGS=(
 print_info "Installing stow configuration required packages"
 
 for PKG in "${PKGS[@]}"; do
-  echo
   print_info "Installing package: $PKG"
   yay -S "$PKG" --noconfirm --needed
 done
@@ -36,7 +36,7 @@ done
 print_info "Stow configuration"
 mkdir -p "$HOME/.config/gtk-3.0"
 mkdir -p "$HOME/.local/bin"
-stow --restow --verbose --dir="$HOME/foundry/anvil/linux" --target="$HOME" dotfiles
+stow --restow --verbose --dir="$HOME/foundry/anvil" --target="$HOME" linux
 stow --restow --verbose --dir="$HOME/foundry/anvil" --target="$HOME" terminal
 
 print_info "copy gtk files"

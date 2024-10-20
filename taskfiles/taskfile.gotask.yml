@@ -13,7 +13,8 @@ tasks:
           REQUIRED_TOOLS: pacman
 
   minimal:
-    desc: Minimal setup for running task as configuration manager
+    internal: true
+    desc: Minimal setup for running task as configuration manager (example only, task is required first)
     prompt: INSTALL AND SYMLINK TASK, ARE YOU CERTAIN?
     platforms: [ linux ]
     cmds:
