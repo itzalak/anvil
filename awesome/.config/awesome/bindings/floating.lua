@@ -4,6 +4,7 @@ local naughty = require "naughty"
 local useless_gap = Dimensions.useless_gap * 2
 local border = Dimensions.border * 2
 local combined_gap = useless_gap + border
+local focus_gap = useless_gap * 10
 
 local function screen_workarea_width(c)
     return c.screen.workarea.width - useless_gap * 4
@@ -138,6 +139,20 @@ local function minimize_all_but_focused()
     end
 end
 
+-- Focus bindings
+awful.keyboard.append_global_keybindings {
+    awful.key({ MetaKey, ControlKey }, "n", function()
+        awful.client.focus.byidx(1)
+    end, { description = "Focus next window by index", group = "client" }),
+
+    awful.key({ MetaKey, ControlKey }, "u", function()
+        local c = awful.client.restore()
+        -- Focus restored client
+        if c then
+            c:activate { raise = true, context = "key.unminimize" }
+        end
+    end, { description = "Restore minimized windows", group = "client" }),
+}
 -- Floating layout bindings
 awful.keyboard.append_global_keybindings {
 
@@ -182,6 +197,8 @@ awful.keyboard.append_global_keybindings {
                 width = (screen_workarea_width(c) / 2) - border,
                 height = (screen_workarea_height(c) / 2) - border,
             }
+        else
+            naughty.notify { text = "Not in floating layout or client not floating!" }
         end
     end, { description = " Floating: snap to top-left corner", group = "floating-layout" }),
 
@@ -195,6 +212,8 @@ awful.keyboard.append_global_keybindings {
                 width = (screen_workarea_width(c) / 2) - border,
                 height = (screen_workarea_height(c) / 2) - combined_gap, -- Resize to adjust for the gap at the bottom
             }
+        else
+            naughty.notify { text = "Not in floating layout or client not floating!" }
         end
     end, { description = " Floating: snap to bottom-left corner", group = "floating-layout" }),
 
@@ -208,6 +227,8 @@ awful.keyboard.append_global_keybindings {
                 width = (screen_workarea_width(c) / 2) - combined_gap,
                 height = (screen_workarea_height(c) / 2) - combined_gap, -- Resize to adjust for the gap at the bottom
             }
+        else
+            naughty.notify { text = "Not in floating layout or client not floating!" }
         end
     end, { description = " Floating: snap to bottom-right corner", group = "floating-layout" }),
 
@@ -222,6 +243,8 @@ awful.keyboard.append_global_keybindings {
                 width = (screen_workarea_width(c) / 2) - combined_gap,
                 height = (screen_workarea_height(c) / 2) - border, -- Resize to adjust for the gap at the bottom
             }
+        else
+            naughty.notify { text = "Not in floating layout or client not floating!" }
         end
     end, { description = " Floating: snap to top-right corner", group = "floating-layout" }),
 
@@ -231,6 +254,8 @@ awful.keyboard.append_global_keybindings {
         if current_layout == "floating" or c.floating == true then
             awful.placement.left(c, { honor_workarea = true })
             snap_to_left(c, screen_workarea_width(c))
+        else
+            naughty.notify { text = "Not in floating layout or client not floating!" }
         end
     end, { description = " Floating: snap to left (half, third, quarter)", group = "floating-layout" }),
 
@@ -240,6 +265,8 @@ awful.keyboard.append_global_keybindings {
         if current_layout == "floating" or c.floating == true then
             awful.placement.right(c, { honor_workarea = true })
             snap_to_right(c, screen_workarea_width(c))
+        else
+            naughty.notify { text = "Not in floating layout or client not floating!" }
         end
     end, { description = " Floating: snap to right (half, third, quarter)", group = "floating-layout" }),
 
@@ -248,8 +275,27 @@ awful.keyboard.append_global_keybindings {
         local c = client.focus
         if current_layout == "floating" or c.floating == true then
             center_client(c)
+        else
+            naughty.notify { text = "Not in floating layout or client not floating!" }
         end
     end, { description = " Floating: center client (half, third, quarter)", group = "floating-layout" }),
+
+    awful.key({ MetaKey, ControlKey }, "c", function()
+        local current_layout = awful.layout.getname(awful.layout.get(awful.screen.focused()))
+        local c = client.focus
+        if current_layout == "floating" or c.floating == true then
+            awful.placement.centered(c, { honor_workarea = true })
+
+            c:geometry {
+                x = screen_workarea_x(c) + focus_gap,
+                y = screen_workarea_y(c) + focus_gap,
+                width = screen_workarea_width(c) - 2 * focus_gap - 2 * border,
+                height = screen_workarea_height(c) - 2 * focus_gap - 2 * border,
+            }
+        else
+            naughty.notify { text = "Not in floating layout or client not floating!" }
+        end
+    end, { description = "Floating: center with gaps", group = "floating-layout" }),
 
     awful.key({ MetaKey, ControlKey }, "m", function()
         minimize_all_but_focused()

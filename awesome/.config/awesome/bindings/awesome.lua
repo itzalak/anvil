@@ -36,24 +36,6 @@ awful.keyboard.append_global_keybindings {
     },
 }
 
--- Focus bindings
-awful.keyboard.append_global_keybindings {
-    awful.key({ MetaKey }, "j", function()
-        awful.client.focus.byidx(1)
-    end, { description = "Focus next window by index", group = "client" }),
-    awful.key({ MetaKey }, "k", function()
-        awful.client.focus.byidx(-1)
-    end, { description = "Focus previous window by index", group = "client" }),
-
-    awful.key({ MetaKey, ControlKey }, "n", function()
-        local c = awful.client.restore()
-        -- Focus restored client
-        if c then
-            c:activate { raise = true, context = "key.unminimize" }
-        end
-    end, { description = "Restore minimized windows", group = "client" }),
-}
-
 -- Layout bindings
 awful.keyboard.append_global_keybindings {
     awful.key({ MetaKey, ControlKey }, "space", function()
