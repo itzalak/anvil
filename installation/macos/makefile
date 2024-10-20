@@ -81,16 +81,6 @@ macos-defaults:
 	@$(call log, macos)
 
 ###############################################################################
-# Zsh
-###############################################################################
-
-.PHONY: zsh-setup
-zsh-setup:
-	@$(call warn, install zsh)
-	./01-zsh.sh
-	@$(call log, zsh)
-
-###############################################################################
 # Stow
 ###############################################################################
 
@@ -113,34 +103,6 @@ stow-delete:
 	@$(call log, delete stow)
 
 ###############################################################################
-# Sdkman
-###############################################################################
-
-.PHONY: sdkman-setup
-sdkman-setup:
-	@$(call warn, installing sdkman and java related packages)
-	@$(call warn, high chance the package installation does not succeed)
-	@$(call warn, look into 02-sdkman.zsh)
-	@. $(SDKMAN)
-ifndef SDKMAN_DIR
-	@curl -Ss "https://get.sdkman.io" | bash
-	@source $(SDKMAN)
-	ifndef SDKMAN_DIR
-		SDKMAN_EXISTS := @echo "SDKMAN_VERSION is undefined" && exit 1
-	endif
-endif
-
-	@. $(SDKMAN) && echo N | sdk install java
-	@. $(SDKMAN) && echo N | sdk install kotlin
-	@. $(SDKMAN) && echo N | sdk install scala
-	@. $(SDKMAN) && echo N | sdk install groovy
-	@. $(SDKMAN) && echo N | sdk install gradle
-	@. $(SDKMAN) && echo N | sdk install maven
-
-	@$(call log, sdkman)
-	@$(call log, java koltin scala groovy gradle maven)
-
-###############################################################################
 # Python
 ###############################################################################
 
@@ -158,17 +120,6 @@ pynvim-install:
 	@$(call warn, installing pynvim)
 	python3 -m pip install --user --upgrade pynvim
 	@$(call log, pynvim)
-
-###############################################################################
-# Zimfw
-###############################################################################
-
-.PHONY: zimfw-refresh
-zimfw-refresh:
-	@$(call warn, zimfw)
-	zsh -ic 'zimfw upgrade'
-	zsh -ic 'zimfw update'
-	@$(call log, zimfw)
 
 ###############################################################################
 # Gitmodules

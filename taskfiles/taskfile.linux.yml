@@ -1,0 +1,64 @@
+version: '3'
+
+tasks:
+
+  setup-awesome:
+    desc: Install linux
+    platforms: [ linux ]
+    cmds:
+      #      - task: brew:setup
+      - task: zsh:setup
+      - task: submodules:init
+      - task: stow:awesome
+      - task: zimfw:install
+      - task: zsh:shell
+      - task: sdkman:setup
+
+  setup-qtile:
+    desc: Install linux
+    platforms: [ linux ]
+    cmds:
+      #      - task: brew:setup
+      - task: zsh:setup
+      - task: submodules:init
+      - task: stow:qtile
+      - task: zimfw:install
+      - task: zsh:shell
+      - task: sdkman:setup
+
+  update:
+    desc: Run update tasks
+    platforms: [ linux ]
+    cmds:
+      - task: pacman:refresh
+      - task: zimfw:refresh
+
+  restow-awesome:
+    desc: Stow all awesome configuration
+    platforms: [ linux ]
+    cmds:
+      - task: stow:awesome
+
+  destow-awesome:
+    desc: Stow all macos configuration
+    platforms: [ linux ]
+    cmds:
+      - task: stow:destow-awesome
+
+  restow-qtile:
+    desc: Stow all qtile configuration
+    platforms: [ linux ]
+    cmds:
+      - task: stow:qtile
+
+  destow-qtile:
+    desc: Stow all macos configuration
+    platforms: [ linux ]
+    cmds:
+      - task: stow:destow-qtile
+
+  k2:
+    desc: Enable keychron fn keys
+    platforms: [ linux ]
+    cmds:
+      - sudo systemctl start keychron

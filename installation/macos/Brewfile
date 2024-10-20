@@ -54,14 +54,12 @@ brew 'npm'
 brew 'nvim'
 brew 'ollama'
 brew 'openssl'
-brew 'pip-tools'
 brew 'pipenv'
 brew 'pipx'
 brew 'postgis'
 brew 'postgresql@16'
-brew 'pre-commit'
 brew 'protobuf'
-brew 'python'
+brew 'pyenv'
 brew 'ranger'
 brew 'ripgrep'
 brew 'shellcheck'
@@ -73,7 +71,6 @@ brew 'tflint'
 brew 'tldr'
 brew 'trash'
 brew 'tree'
-brew 'virtualenv'
 brew 'watch'
 brew 'wget'
 brew 'wrk'
@@ -123,7 +120,8 @@ cask 'visualvm'
 brew 'gum'
 
 # Python,
-# Packages poetry & commitizen give less issues when installed with pipx
+# Pre commit, poetry, commitizen, virtualenv, pip-tools managed by pipx
+# Python, pip is managed by pyenv
 
 # Java
 # java, groovy, scala, kotlin, maven and gradle are managed by sdkman

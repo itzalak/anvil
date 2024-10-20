@@ -1,0 +1,29 @@
+version: '3'
+
+tasks:
+
+  assert:
+    internal: true
+    cmds:
+      - task: :helper:assert
+        vars:
+          REQUIRED_TOOLS: pre-commit
+
+  setup:
+    deps: [ assert ]
+    desc: Initialize pre-commit
+    cmds:
+      - pre-commit install
+      - pre-commit autoupdate
+
+  update:
+    deps: [ assert ]
+    desc: Update pre-commit hooks
+    cmds:
+      - pre-commit autoupdate
+
+  run:
+    deps: [ assert ]
+    desc: Run pre-commit for all files
+    cmds:
+      - pre-commit run --color always --all-files

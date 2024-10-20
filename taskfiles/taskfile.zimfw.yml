@@ -1,0 +1,53 @@
+version: '3'
+
+vars:
+  ZSH: zsh -ic
+
+tasks:
+
+  assert:
+    internal: true
+    cmds:
+      - task: :helper:assert
+        vars:
+          REQUIRED_TOOLS: git, zsh
+
+  refresh:
+    desc: Update and upgrade zimfw
+    deps: [ assert ]
+    internal: true
+    cmds:
+      - "{{.ZSH}} 'zimfw info'"
+      - task: clean
+      - task: update
+      - task: upgrade
+    silent: true
+
+  clean:
+    desc: Clean compiled, dumpfile, and uninstall unused modules
+    deps: [ assert ]
+    internal: true
+    cmds:
+      - "{{.ZSH}} 'zimfw clean'"
+      - "{{.ZSH}} 'zimfw uninstall'"
+
+  install:
+    desc: Install new modules
+    deps: [ assert ]
+    internal: true
+    cmds:
+      - "{{.ZSH}} 'zimfw install -v'"
+
+  update:
+    internal: true
+    desc: Update current modules
+    deps: [ assert ]
+    cmds:
+      - "{{.ZSH}} 'zimfw update -v'"
+
+  upgrade:
+    internal: true
+    desc: Upgrade zimfw
+    deps: [ assert ]
+    cmds:
+      - "{{.ZSH}} 'zimfw upgrade -v'"

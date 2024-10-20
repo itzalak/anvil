@@ -1,0 +1,45 @@
+version: '3'
+
+includes:
+  helper: "./taskfile.helper.yml"
+
+tasks:
+
+  setup:
+    desc: Setup zsh configuration
+    internal: true
+    cmds:
+      - task: directories
+      - task: brew
+
+  directories:
+    desc: Create directories for zsh configuration
+    internal: true
+    cmds:
+      - mkdir -p {{.HOME}}/.config/zsh
+      - mkdir -p {{.HOME}}/.cache/zsh
+
+  brew:
+    desc: Installing zsh and minimal packages
+    platforms: [ darwin ]
+    internal: true
+    cmds:
+      - task: helper:assert
+        vars:
+          REQUIRED_TOOLS: brew
+      - brew install bat
+      - brew install fd
+      - brew install fzf
+      - brew install ripgrep
+      - brew install starship
+      - brew install zoxide
+      - brew install zsh
+
+  shell:
+    desc: Changing the default shell to zsh
+    internal: true
+    cmds:
+      - echo 'Set zsh as default shell'
+      - echo 'chsh -s "$(which zsh)"'
+      - echo 'sudo chsh -s "$(which zsh)"'
+    silent: true

@@ -1,0 +1,61 @@
+version: '3'
+
+tasks:
+
+  assert:
+    internal: true
+    cmds:
+      - task: :helper:assert
+        vars:
+          REQUIRED_TOOLS: poetry
+
+  setup:
+    deps: [ assert ]
+    desc: Poetry local setup and install
+    cmds:
+      - task: set-local-venv
+      - task: delete-local-venv
+      - task: install
+    silent: true
+
+  set-local-venv:
+    deps: [ assert ]
+    desc: Set poetry venv location to project
+    internal: true
+    cmds:
+      - poetry config virtualenvs.in-project true
+
+  get-local-venv:
+    deps: [ assert ]
+    desc: Get poetry environment info
+    internal: true
+    cmds:
+      - poetry env info --path
+
+  delete-local-venv:
+    deps: [ assert ]
+    desc: Delete the virtual environment
+    internal: true
+    cmds:
+      - rm -rf .venv
+      - rm -rf venv
+
+  install:
+    deps: [ assert ]
+    desc: Install poetry dependencies
+    internal: true
+    cmds:
+      - poetry install
+
+  update:
+    deps: [ assert ]
+    desc: Update poetry dependencies
+    cmds:
+      - poetry update
+      - poetry self update
+
+  test:
+    deps: [ assert ]
+    desc: Run tests using poetry
+    cmds:
+      - poetry run pytest

@@ -1,0 +1,50 @@
+version: '3'
+
+includes:
+  brew: "./taskfiles/taskfile.brew.yml"
+  helper: "./taskfiles/taskfile.helper.yml"
+  linux: "./taskfiles/taskfile.linux.yml"
+  macos: "./taskfiles/taskfile.macos.yml"
+  pacman: "./taskfiles/taskfile.pacman.yml"
+  poetry: "./taskfiles/taskfile.poetry.yml"
+  precommit: "./taskfiles/taskfile.precommit.yml"
+  python: "./taskfiles/taskfile.python.yml"
+  sdkman: "./taskfiles/taskfile.sdkman.yml"
+  stow: "./taskfiles/taskfile.stow.yml"
+  submodules: "./taskfiles/taskfile.submodules.yml"
+  zimfw: "./taskfiles/taskfile.zimfw.yml"
+  zsh: "./taskfiles/taskfile.zsh.yml"
+
+tasks:
+
+  default:
+    cmds:
+      - |
+        echo "Home dir: {{.HOME}}"
+        echo "Root dir: {{.ROOT_DIR}}"
+        echo "Working dir: {{.USER_WORKING_DIR}}"
+        echo "OS: {{OS}}"
+        task --list
+    silent: true
+
+  setup:
+    desc: Poetry and pre-commit setup
+    cmds:
+      - task: poetry:setup
+      - task: precommit:setup
+
+  update:
+    desc: Poetry and pre-commit update
+    cmds:
+      - task: poetry:update
+      - task: precommit:update
+
+  foundry-clone:
+    desc: Clone git repositories
+    cmds:
+      - ./bin/clone_repositories.py -s ./repositories.yaml -r
+
+  foundry-update:
+    desc: Update foundry repositories
+    cmds:
+      - ./bin/updategitrepos.py --foundry --ignore {{.HOME}}/foundry/depository/archived -r

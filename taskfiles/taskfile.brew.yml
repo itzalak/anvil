@@ -1,0 +1,59 @@
+version: '3'
+
+includes:
+  helper: "./taskfile.helper.yml"
+
+vars:
+  BREWDIR: "{{.ROOT_DIR}}/installation/macos"
+
+tasks:
+
+  assert:
+    internal: true
+    cmds:
+      - task: helper:assert
+        vars:
+          REQUIRED_TOOLS: brew
+
+  setup:
+    desc: Install brew and packages
+    platforms: [ darwin ]
+    cmds:
+      - task: install
+      - task: brewfile
+
+  refresh:
+    deps: [ assert ]
+    desc: Upgrade and update brew and packages
+    platforms: [ darwin ]
+    cmds:
+      - brew upgrade
+      - brew update
+      - task: brewfile
+
+  doctor:
+    deps: [ assert ]
+    desc: Modify common configuration
+    platforms: [ darwin ]
+    cmds:
+      - brew doctor
+    silent: true
+
+  install:
+    deps: [ assert ]
+    desc: Install brew
+    internal: true
+    platforms: [ darwin ]
+    status:
+      - command -v brew
+    cmds:
+      - "{{.BREWDIR}}/brew-install.sh"
+
+  brewfile:
+    desc: Install brew from file
+    platforms: [ darwin ]
+    preconditions:
+      - sh: brew -v
+        msg: 'Could not find `brew`'
+    cmds:
+      - "brew bundle --file {{.BREWDIR}}/Brewfile"

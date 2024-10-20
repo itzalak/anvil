@@ -1,0 +1,43 @@
+version: '3'
+
+tasks:
+
+  setup:
+    desc: Install brew, stow, zsh and update macos defaults
+    platforms: [ darwin ]
+    cmds:
+      - task: :brew:setup
+      - task: :zsh:setup
+      - task: :submodules:init
+      - task: :stow:macos
+      - task: :zimfw:install
+      - task: :zsh:shell
+      - task: :sdkman:setup
+      - task: :settings
+
+  update:
+    desc: Run update tasks
+    platforms: [ darwin ]
+    cmds:
+      - task: :brew:refresh
+      - task: :zimfw:refresh
+
+  restow:
+    desc: Stow all macos configuration
+    platforms: [ darwin ]
+    cmds:
+      - task: :stow:macos
+
+  destow:
+    desc: Restow all macos configuration
+    platforms: [ darwin ]
+    cmds:
+      - task: :stow:destow-macos
+
+  settings:
+    desc: Apply macOS defaults
+    platforms: [ darwin ]
+    internal: true
+    prompt: WILL UPDATE MACOS DEFAULT SETTINGS, ARE YOU CERTAIN?
+    cmds:
+      - bash installation/macos/macos-defaults.sh

@@ -1,0 +1,56 @@
+version: '3'
+
+includes:
+  helper: "./taskfile.helper.yml"
+
+tasks:
+
+  assert:
+    cmds:
+      - task: helper:assert
+        vars:
+          REQUIRED_TOOLS: python3, pip3, pipx
+
+  setup:
+    desc: Pynvim and pipx installation
+    cmds:
+      - task: pipx
+      - task: pynvim
+      - task: pyenv
+    silent: true
+
+  pipx:
+    deps: [ assert ]
+    internal: true
+    desc: Install pipx packages of poetry and commitizen
+    cmds:
+      - pipx install poetry
+      - pipx inject poetry poetry-plugin-export
+      - pipx install commitizen
+      - pipx install pre-commit
+      - pipx install pip-tools
+      - pipx install virtualenv
+      - pipx ensurepath
+      - task: helper:assert
+        vars:
+          REQUIRED_TOOLS: cz, poetry, pre-commit, virtualenv
+
+  pynvim:
+    deps: [ assert ]
+    internal: true
+    platforms: [ darwin ]
+    desc: Install pynvim (extra for neovim)
+    cmds:
+      - cmd: python3 -m pip install --user --upgrade pynvim
+        ignore_error: true
+
+  pyenv:
+    platforms: [ darwin ]
+    desc: Install pyenv
+    cmds:
+      - pyenv install 3.13.0
+      - pyenv global 3.13.0
+      - pyenv local 3.13.0
+      - task: helper:assert
+        vars:
+          REQUIRED_TOOLS: python, pip

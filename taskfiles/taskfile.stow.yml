@@ -1,0 +1,101 @@
+version: '3'
+
+includes:
+  helper: "./taskfile.helper.yml"
+
+vars:
+  RESTOW_CMD: "stow --restow --no-folding --verbose --dir={{.ROOT_DIR}} --target={{.HOME}}"
+  DESTOW_CMD: "stow --delete --verbose --dir={{.ROOT_DIR}} --target={{.HOME}}"
+
+tasks:
+
+  assert:
+    internal: true
+    cmds:
+      - task: helper:assert
+        vars:
+          REQUIRED_TOOLS: stow
+
+  macos:
+    desc: Modify all macos configuration
+    deps: [ assert ]
+    internal: true
+    platforms: [ darwin ]
+    cmds:
+      - task: common
+        vars:
+          CMD: "{{.RESTOW_CMD}}"
+      - "{{.RESTOW_CMD}} macos"
+
+  destow-macos:
+    desc: Delete all macos configuration
+    deps: [ assert ]
+    internal: true
+    platforms: [ darwin ]
+    cmds:
+      - task: common
+        vars:
+          CMD: "{{.DESTOW_CMD}}"
+      - "{{.DESTOW_CMD}} macos"
+
+  awesome:
+    desc: Modify all awesome configuration
+    deps: [ assert ]
+    internal: true
+    platforms: [ linux ]
+    cmds:
+      - task: common
+        vars:
+          CMD: "{{.RESTOW_CMD}}"
+      - task: helper:assert
+        vars:
+          REQUIRED_TOOLS: awesome
+      - "{{.RESTOW_CMD}} linux"
+      - "{{.RESTOW_CMD}} awesome"
+
+  destow-awesome:
+    desc: Delete all awesome configuration
+    deps: [ assert ]
+    internal: true
+    platforms: [ linux ]
+    cmds:
+      - task: common
+        vars:
+          CMD: "{{.DESTOW_CMD}}"
+      - "{{.DESTOW_CMD}} linux"
+      - "{{.DESTOW_CMD}} awesome"
+
+  qtile:
+    desc: Modify all qtile configuration
+    deps: [ assert ]
+    internal: true
+    platforms: [ linux ]
+    cmds:
+      - task: common
+        vars:
+          CMD: "{{.RESTOW_CMD}}"
+      - task: helper:assert
+        vars:
+          REQUIRED_TOOLS: qtile
+      - "{{.RESTOW_CMD}} linux"
+      - "{{.RESTOW_CMD}} qtile"
+
+  destow-qtile:
+    desc: Delete all qtile configuration
+    deps: [ assert ]
+    internal: true
+    platforms: [ linux ]
+    cmds:
+      - task: common
+        vars:
+          CMD: "{{.DESTOW_CMD}}"
+      - "{{.DESTOW_CMD}} linux"
+      - "{{.DESTOW_CMD}} qtile"
+
+  common:
+    desc: Modify common configuration
+    deps: [ assert ]
+    internal: true
+    cmds:
+      - "{{.CMD}} neovim"
+      - "{{.CMD}} terminal"

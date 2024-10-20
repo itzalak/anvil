@@ -92,24 +92,24 @@ endif
 .PHONY: restow
 restow:
 	@$(call warn, restow)
-	exec stow --restow --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) neovim
-	exec stow --restow --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) terminal
+	exec stow --restow --no-folding --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) neovim
+	exec stow --restow --no-folding --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) terminal
 ifeq ($(OS), Darwin)
-	exec stow --restow --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) macos
+	exec stow --restow --no-folding --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) macos
 endif
 	@$(call log, restow)
 
 .PHONY: restow-awesome
 restow-awesome: restow
 	@$(call warn, awesome)
-	exec stow --restow --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) linux
-	exec stow --restow --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) awesome
+	exec stow --restow --no-folding --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) linux
+	exec stow --restow --no-folding --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) awesome
 
 .PHONY: restow-qtile
 restow-qtile:
 	@$(call warn, qtile)
-	exec stow --restow --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) linux
-	exec stow --restow --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) qtile
+	exec stow --restow --no-folding --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) linux
+	exec stow --restow --no-folding --verbose --dir=$(HOME)/foundry/anvil --target=$(HOME) qtile
 
 .PHONY: destow
 destow:
