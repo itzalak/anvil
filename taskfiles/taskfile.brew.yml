@@ -6,7 +6,19 @@ includes:
 vars:
   BREWDIR: "{{.ROOT_DIR}}/installation/macos"
 
+silent: true
+
 tasks:
+
+  default:
+    internal: true
+    desc: Default
+    cmds:
+      - |
+        echo "Working dir: {{.USER_WORKING_DIR}}"
+        echo "OS: {{OS}}"
+        task --list
+    silent: true
 
   assert:
     internal: true
@@ -37,7 +49,6 @@ tasks:
     platforms: [ darwin ]
     cmds:
       - brew doctor
-    silent: true
 
   install:
     deps: [ assert ]

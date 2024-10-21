@@ -1,0 +1,37 @@
+version: '3'
+
+includes:
+  helper: "./taskfile.helper.yml"
+
+tasks:
+
+  default:
+    internal: true
+    desc: Default
+    cmds:
+      - |
+        echo "Working dir: {{.USER_WORKING_DIR}}"
+        echo "OS: {{OS}}"
+        task --list
+    silent: true
+
+  assert:
+    internal: true
+    cmds:
+      - task: helper:assert
+        vars:
+          REQUIRED_TOOLS: python3, poetry
+
+  clone:
+    deps: [ assert ]
+    internal: true
+    desc: Clone git repositories
+    cmds:
+      - ./bin/clone_repositories.py -s ./repositories.yaml -r
+
+  update:
+    deps: [ assert ]
+    internal: true
+    desc: Update foundry repositories
+    cmds:
+      - ./bin/updategitrepos.py --foundry --ignore {{.HOME}}/foundry/depository/archived -r

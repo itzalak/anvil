@@ -9,6 +9,16 @@ vars:
 
 tasks:
 
+  default:
+    internal: true
+    desc: Default
+    cmds:
+      - |
+        echo "Working dir: {{.USER_WORKING_DIR}}"
+        echo "OS: {{OS}}"
+        task --list
+    silent: true
+
   assert:
     internal: true
     cmds:

@@ -9,6 +9,16 @@ vars:
 
 tasks:
 
+  default:
+    internal: true
+    desc: Default
+    cmds:
+      - |
+        echo "Working dir: {{.USER_WORKING_DIR}}"
+        echo "OS: {{OS}}"
+        task --list
+    silent: true
+
   assert:
     internal: true
     cmds:
@@ -37,7 +47,7 @@ tasks:
       - "{{.DESTOW_CMD}} macos"
 
   awesome:
-    desc: Modify all awesome configuration
+    desc: Modify awesome configuration
     deps: [ assert ]
     platforms: [ linux ]
     cmds:
@@ -51,7 +61,7 @@ tasks:
       - "{{.RESTOW_CMD}} awesome"
 
   destow-awesome:
-    desc: Delete all awesome configuration
+    desc: Delete awesome configuration
     deps: [ assert ]
     platforms: [ linux ]
     cmds:
@@ -62,7 +72,7 @@ tasks:
       - "{{.DESTOW_CMD}} awesome"
 
   qtile:
-    desc: Modify all qtile configuration
+    desc: Modify qtile configuration
     deps: [ assert ]
     platforms: [ linux ]
     cmds:
@@ -76,7 +86,7 @@ tasks:
       - "{{.RESTOW_CMD}} qtile"
 
   destow-qtile:
-    desc: Delete all qtile configuration
+    desc: Delete qtile configuration
     deps: [ assert ]
     platforms: [ linux ]
     cmds:
@@ -87,7 +97,7 @@ tasks:
       - "{{.DESTOW_CMD}} qtile"
 
   gnome:
-    desc: Modify all qtile configuration
+    desc: Modify gnome configuration
     deps: [ assert ]
     platforms: [ linux ]
     cmds:
@@ -100,7 +110,7 @@ tasks:
       - "{{.RESTOW_CMD}} linux"
 
   destow-gnome:
-    desc: Delete all qtile configuration
+    desc: Delete gnome configuration
     deps: [ assert ]
     platforms: [ linux ]
     cmds:

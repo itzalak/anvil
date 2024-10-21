@@ -3,6 +3,7 @@ version: '3'
 includes:
   brew: "./taskfiles/taskfile.brew.yml"
   gotask: "./taskfiles/taskfile.gotask.yml"
+  foundry: "./taskfiles/taskfile.foundry.yml"
   helper: "./taskfiles/taskfile.helper.yml"
   linux: "./taskfiles/taskfile.linux.yml"
   macos: "./taskfiles/taskfile.macos.yml"
@@ -18,6 +19,8 @@ includes:
 tasks:
 
   default:
+    internal: true
+    desc: Default
     cmds:
       - |
         echo "Home dir: {{.HOME}}"
@@ -39,12 +42,18 @@ tasks:
       - task: poetry:update
       - task: precommit:update
 
+  refresh:
+    desc: Update and refresh system
+    cmds:
+      - task: macos:update
+      - task: linux:update
+
   foundry-clone:
     desc: Clone git repositories
     cmds:
-      - ./bin/clone_repositories.py -s ./repositories.yaml -r
+      - task: foundry:clone
 
   foundry-update:
     desc: Update foundry repositories
     cmds:
-      - ./bin/updategitrepos.py --foundry --ignore {{.HOME}}/foundry/depository/archived -r
+      - task: foundry:update

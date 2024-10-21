@@ -37,6 +37,9 @@ return {
 
     color_scheme = "Wezterm",
 
+    -- History size
+    scrollback_lines = 30000,
+
     -- Pretty Colors
     bold_brightens_ansi_colors = true,
 

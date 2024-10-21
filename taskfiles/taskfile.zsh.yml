@@ -5,6 +5,16 @@ includes:
 
 tasks:
 
+  default:
+    internal: true
+    desc: Default
+    cmds:
+      - |
+        echo "Working dir: {{.USER_WORKING_DIR}}"
+        echo "OS: {{OS}}"
+        task --list
+    silent: true
+
   setup:
     desc: Setup zsh configuration
     internal: true

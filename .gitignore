@@ -152,3 +152,6 @@ Brewfile.lock.json
 
 # macos
 .DS_Store
+
+# taskfile
+.task
