@@ -41,6 +41,7 @@ done
 # This might break other apps like taskwarrior
 echo
 print_info "Symlinking taskfile"
+print_info "This might break other apps like taskwarrior"
 print_info "INFO: to revert the symlink: sudo rm /usr/bin/task"
 sudo ln -s /usr/bin/go-task /usr/bin/task
 

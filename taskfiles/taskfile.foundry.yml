@@ -20,18 +20,16 @@ tasks:
     cmds:
       - task: helper:assert
         vars:
-          REQUIRED_TOOLS: python3, poetry
+          REQUIRED_TOOLS: git, python3, poetry
 
-  clone:
+  setup:
     deps: [ assert ]
-    internal: true
-    desc: Clone git repositories
+    desc: Setup foundry repositories
     cmds:
-      - ./bin/clone_repositories.py -s ./repositories.yaml -r
+      - ./bin/foundry_repositories.py -s ./repositories.yaml -r
 
   update:
     deps: [ assert ]
-    internal: true
     desc: Update foundry repositories
     cmds:
       - ./bin/updategitrepos.py --foundry --ignore {{.HOME}}/foundry/depository/archived -r

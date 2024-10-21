@@ -22,8 +22,10 @@ tasks:
   setup:
     deps: [ assert ]
     desc: Poetry local setup and install
+    internal: true
     cmds:
       - task: set-local-venv
+      - task: get-local-venv
       - task: delete-local-venv
       - task: install
     silent: true
@@ -37,7 +39,7 @@ tasks:
 
   get-local-venv:
     deps: [ assert ]
-    desc: Get poetry environment info
+    desc: Get poetry environment info (documentation)
     internal: true
     cmds:
       - poetry env info --path
@@ -60,12 +62,14 @@ tasks:
   update:
     deps: [ assert ]
     desc: Update poetry dependencies
+    internal: true
     cmds:
       - poetry update
       - poetry self update
 
   test:
     deps: [ assert ]
-    desc: Run tests using poetry
+    desc: Run tests using poetry (documentation)
+    internal: true
     cmds:
       - poetry run pytest

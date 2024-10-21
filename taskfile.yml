@@ -42,18 +42,15 @@ tasks:
       - task: poetry:update
       - task: precommit:update
 
-  refresh:
+  precommitrun:
+    aliases: [run]
+    desc: Run pre-commit on all files
+    cmds:
+      - task: precommit:run
+
+  os-update:
+    aliases: [os]
     desc: Update and refresh system
     cmds:
       - task: macos:update
       - task: linux:update
-
-  foundry-clone:
-    desc: Clone git repositories
-    cmds:
-      - task: foundry:clone
-
-  foundry-update:
-    desc: Update foundry repositories
-    cmds:
-      - task: foundry:update

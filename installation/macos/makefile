@@ -61,7 +61,7 @@ clean:
 .PHONY: brew-install
 brew-install:
 	@$(call warn, install brew)
-	bash brew-install.sh
+	bash ./minimal-setup.sh
 	@$(call log, brew)
 
 .PHONY: brew-setup

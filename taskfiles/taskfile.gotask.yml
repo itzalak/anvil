@@ -24,7 +24,7 @@ tasks:
 
   minimal:
     internal: true
-    desc: Minimal setup for running task as configuration manager (example only, task is required first)
+    desc: Minimal setup for running task as configuration manager (documentation)
     prompt: INSTALL AND SYMLINK TASK, ARE YOU CERTAIN?
     platforms: [ linux ]
     cmds:

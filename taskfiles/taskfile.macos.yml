@@ -3,8 +3,8 @@ version: '3'
 tasks:
 
   default:
-    internal: true
     desc: Default
+    internal: true
     cmds:
       - |
         echo "Working dir: {{.USER_WORKING_DIR}}"
@@ -31,18 +31,6 @@ tasks:
     cmds:
       - task: :brew:refresh
       - task: :zimfw:refresh
-
-  restow:
-    desc: Stow all macos configuration
-    platforms: [ darwin ]
-    cmds:
-      - task: :stow:macos
-
-  destow:
-    desc: Restow all macos configuration
-    platforms: [ darwin ]
-    cmds:
-      - task: :stow:destow-macos
 
   settings:
     desc: Apply macOS defaults

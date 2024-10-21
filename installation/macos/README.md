@@ -96,4 +96,4 @@ brew bundle --file "$HOME/anvil/installation/macos/Brewfile""
 
 ### Sdkman
 
-Used for installing java, kotlin, groovy, gradle, scala and maven. Instructions can be found in [02-sdkamn.zsh](02-sdkman.zsh)
+Used for installing java, kotlin, groovy, gradle, scala and maven. Instructions can be found in [02-sdkamn.zsh](legacy/02-sdkman.zsh)

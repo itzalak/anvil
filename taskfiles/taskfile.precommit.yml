@@ -3,8 +3,8 @@ version: '3'
 tasks:
 
   default:
-    internal: true
     desc: Default
+    internal: true
     cmds:
       - |
         echo "Working dir: {{.USER_WORKING_DIR}}"
@@ -24,7 +24,6 @@ tasks:
     desc: Initialize pre-commit
     cmds:
       - pre-commit install
-      - pre-commit autoupdate
 
   update:
     deps: [ assert ]
@@ -35,5 +34,6 @@ tasks:
   run:
     deps: [ assert ]
     desc: Run pre-commit for all files
+    internal: true
     cmds:
       - pre-commit run --color always --all-files
