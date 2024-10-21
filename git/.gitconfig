@@ -1,0 +1,13 @@
+# ~/.gitconfig
+
+[includeIf "gitdir:~/work/"]
+    path = ~/work/.gitconfig.work
+
+[includeIf "gitdir:~/foundry/"]
+    path = ~/foundry/.gitconfig.pers
+
+[core]
+    excludesfile = ~/.gitignore
+
+[pull]
+    rebase = true

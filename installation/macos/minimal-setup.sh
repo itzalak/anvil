@@ -12,6 +12,8 @@ function print_info() {
   echo -e "${GREEN}$1${RESET}"
 }
 
+xcode-select --install
+
 if ! [ "$BREW" ]; then
   print_info "Homebrew not found! Installing..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

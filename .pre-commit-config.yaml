@@ -68,7 +68,8 @@ repos:
               CHANGELOG.md |
               lazyvim.json |
               terminal/.config/ranger/scope.sh |
-              .gitmodules
+              .gitmodules |
+              ^git/
           )$
 
   - repo: https://github.com/python-poetry/poetry
