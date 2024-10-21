@@ -93,6 +93,7 @@ For installation follow instructions in [makefile](installation/linux/makefile) 
 
 ## IDEA
 
+WIP: can I script this? or change? also update...
 Intellij IDEA community useful plugins:
 
 - .ignore
