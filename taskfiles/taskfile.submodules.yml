@@ -30,7 +30,7 @@ tasks:
 
   init:
     desc: Initialize all submodules
-    deps: [ assert ]
+    deps: [assert]
     cmds:
       - task: ranger
         vars:
@@ -45,7 +45,7 @@ tasks:
 
   deinit:
     desc: Deinitialize all submodules
-    deps: [ assert ]
+    deps: [assert]
     prompt: ARE YOU SURE YOU WANT TO DEINIT THE SUBMODULES
     cmds:
       - task: ranger
@@ -70,7 +70,7 @@ tasks:
 
   remove:
     internal: true
-    deps: [ assert ]
+    deps: [assert]
     desc: Remove all submodules
     prompt: ARE YOU SURE YOU WANT TO REMOVE THE SUBMODULES
     cmds:

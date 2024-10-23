@@ -24,7 +24,7 @@ tasks:
 
   refresh:
     desc: Update and upgrade zimfw
-    deps: [ assert ]
+    deps: [assert]
     internal: true
     cmds:
       - cmd: "{{.ZSH}} 'zimfw info'"
@@ -36,7 +36,7 @@ tasks:
 
   clean:
     desc: Clean compiled, dumpfile, and uninstall unused modules
-    deps: [ assert ]
+    deps: [assert]
     internal: true
     cmds:
       - cmd: "{{.ZSH}} 'zimfw clean'"
@@ -46,7 +46,7 @@ tasks:
 
   install:
     desc: Install new modules
-    deps: [ assert ]
+    deps: [assert]
     internal: true
     cmds:
       - cmd: "{{.ZSH}} 'zimfw install -v'"
@@ -55,7 +55,7 @@ tasks:
   update:
     internal: true
     desc: Update current modules
-    deps: [ assert ]
+    deps: [assert]
     cmds:
       - cmd: "{{.ZSH}} 'zimfw update -v'"
         ignore_error: true
@@ -63,7 +63,7 @@ tasks:
   upgrade:
     internal: true
     desc: Upgrade zimfw
-    deps: [ assert ]
+    deps: [assert]
     cmds:
       - cmd: "{{.ZSH}} 'zimfw upgrade -v'"
         ignore_error: true

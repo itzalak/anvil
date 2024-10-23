@@ -30,33 +30,33 @@ tasks:
   setup:
     desc: Install brew and packages
     internal: true
-    platforms: [ darwin ]
+    platforms: [darwin]
     cmds:
       - task: install
       - task: brewfile
 
   refresh:
-    deps: [ assert ]
+    deps: [assert]
     desc: Upgrade and update brew and packages
-    platforms: [ darwin ]
+    platforms: [darwin]
     cmds:
       - brew upgrade
       - brew update
       - task: brewfile
 
   doctor:
-    deps: [ assert ]
+    deps: [assert]
     desc: Modify common configuration
     internal: true
-    platforms: [ darwin ]
+    platforms: [darwin]
     cmds:
       - brew doctor
 
   install:
-    deps: [ assert ]
+    deps: [assert]
     desc: Install brew minimal setup
     internal: true
-    platforms: [ darwin ]
+    platforms: [darwin]
     status:
       - command -v brew
     cmds:
@@ -64,7 +64,7 @@ tasks:
 
   brewfile:
     desc: Install brew from file
-    platforms: [ darwin ]
+    platforms: [darwin]
     preconditions:
       - sh: brew -v
         msg: 'Could not find `brew`'

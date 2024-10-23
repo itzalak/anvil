@@ -1,15 +1,18 @@
+---
+# Foundry repositories to set up
+
 foundry:
-- git@github.com:itzalak/anvil.git
-- depository:
-  - git@github.com:itzalak/pyresume.git
-  - git@github.com:itzalak/thescream.nvim.git
-  - git@github.com:tldr-pages/tldr.git
-  - git@github.com:sherlock-project/sherlock.git
-  - archived:
-    - git@github.com:itzalak/deprecated-static-site.git
-  - templates:
-    - git@github.com:itzalak/gradle-template.git
-    - git@github.com:itzalak/obsidian-template.git
-    - git@github.com:itzalak/cookiecutter-base.git
-    - git@github.com:itzalak/cookiecutter-python.git
-    - git@github.com:itzalak/cookiecutter-kotlin.git
+  - git@github.com:itzalak/anvil.git
+  - depository:
+      - git@github.com:itzalak/pyresume.git
+      - git@github.com:itzalak/thescream.nvim.git
+      - git@github.com:tldr-pages/tldr.git
+      - git@github.com:sherlock-project/sherlock.git
+      - archived:
+          - git@github.com:itzalak/deprecated-static-site.git
+      - templates:
+          - git@github.com:itzalak/gradle-template.git
+          - git@github.com:itzalak/obsidian-template.git
+          - git@github.com:itzalak/cookiecutter-base.git
+          - git@github.com:itzalak/cookiecutter-python.git
+          - git@github.com:itzalak/cookiecutter-kotlin.git

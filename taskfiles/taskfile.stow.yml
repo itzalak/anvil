@@ -28,8 +28,8 @@ tasks:
 
   macos:
     desc: Modify all macos configuration
-    deps: [ assert ]
-    platforms: [ darwin ]
+    deps: [assert]
+    platforms: [darwin]
     cmds:
       - task: common
         vars:
@@ -38,8 +38,8 @@ tasks:
 
   destow-macos:
     desc: Delete all macos configuration
-    deps: [ assert ]
-    platforms: [ darwin ]
+    deps: [assert]
+    platforms: [darwin]
     cmds:
       - task: common
         vars:
@@ -48,8 +48,8 @@ tasks:
 
   awesome:
     desc: Modify awesome configuration
-    deps: [ assert ]
-    platforms: [ linux ]
+    deps: [assert]
+    platforms: [linux]
     cmds:
       - task: common
         vars:
@@ -62,8 +62,8 @@ tasks:
 
   destow-awesome:
     desc: Delete awesome configuration
-    deps: [ assert ]
-    platforms: [ linux ]
+    deps: [assert]
+    platforms: [linux]
     cmds:
       - task: common
         vars:
@@ -73,8 +73,8 @@ tasks:
 
   qtile:
     desc: Modify qtile configuration
-    deps: [ assert ]
-    platforms: [ linux ]
+    deps: [assert]
+    platforms: [linux]
     cmds:
       - task: common
         vars:
@@ -87,8 +87,8 @@ tasks:
 
   destow-qtile:
     desc: Delete qtile configuration
-    deps: [ assert ]
-    platforms: [ linux ]
+    deps: [assert]
+    platforms: [linux]
     cmds:
       - task: common
         vars:
@@ -98,8 +98,8 @@ tasks:
 
   gnome:
     desc: Modify gnome configuration
-    deps: [ assert ]
-    platforms: [ linux ]
+    deps: [assert]
+    platforms: [linux]
     cmds:
       - task: common
         vars:
@@ -111,8 +111,8 @@ tasks:
 
   destow-gnome:
     desc: Delete gnome configuration
-    deps: [ assert ]
-    platforms: [ linux ]
+    deps: [assert]
+    platforms: [linux]
     cmds:
       - task: common
         vars:
@@ -121,7 +121,7 @@ tasks:
 
   common:
     desc: Modify common configuration
-    deps: [ assert ]
+    deps: [assert]
     internal: true
     cmds:
       - rm -rf "{{.HOME}}/.zshrc"

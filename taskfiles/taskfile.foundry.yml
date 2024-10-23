@@ -23,13 +23,16 @@ tasks:
           REQUIRED_TOOLS: git, python3, poetry
 
   setup:
-    deps: [ assert ]
+    deps: [assert]
     desc: Setup foundry repositories
     cmds:
       - ./bin/foundry_repositories.py -s ./repositories.yaml -r
 
   update:
-    deps: [ assert ]
+    deps: [assert]
     desc: Update foundry repositories
+    vars:
+      IGNORE: "{{.HOME}}/foundry/depository/archived"
+      CMD: ./bin/updategitrepos.py
     cmds:
-      - ./bin/updategitrepos.py --foundry --ignore {{.HOME}}/foundry/depository/archived -r
+      - "{{.CMD}} --foundry --ignore {{.IGNORE}} -r"

@@ -14,7 +14,7 @@ tasks:
 
   setup:
     desc: Install brew, stow, zsh and update macos defaults
-    platforms: [ darwin ]
+    platforms: [darwin]
     cmds:
       - task: :brew:setup
       - task: :zsh:setup
@@ -27,14 +27,14 @@ tasks:
 
   update:
     desc: Run update tasks
-    platforms: [ darwin ]
+    platforms: [darwin]
     cmds:
       - task: :brew:refresh
       - task: :zimfw:refresh
 
   settings:
     desc: Apply macOS defaults
-    platforms: [ darwin ]
+    platforms: [darwin]
     internal: true
     prompt: WILL UPDATE MACOS DEFAULT SETTINGS, ARE YOU CERTAIN?
     cmds:

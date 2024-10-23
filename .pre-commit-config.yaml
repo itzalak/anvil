@@ -1,3 +1,6 @@
+---
+# Configuration for https://pre-commit.com/
+
 default_install_hook_types:
   - pre-commit
   - commit-msg
@@ -9,22 +12,28 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
-      - id: check-yaml
-      - id: end-of-file-fixer
-      - id: trailing-whitespace
+      - id: check-builtin-literals
+      - id: check-case-conflict
       - id: check-json
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-yaml
       - id: check-executables-have-shebangs
         exclude: ^terminal/.config/ranger
       - id: check-shebang-scripts-are-executable
-      - id: check-symlinks
-      - id: check-case-conflict
+        exclude: ^terminal/.config/ranger
       - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: name-tests-test
+      - id: trailing-whitespace
+        exclude: '^\.gitignore$'
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
     rev: v1.3.3
     hooks:
       - id: python-safety-dependencies-check
-        args: [ "--disable-optional-telemetry" ]
+        files: pyproject.toml
+        args: ['--disable-optional-telemetry']
 
   - repo: https://github.com/psf/black
     rev: 24.10.0
@@ -36,7 +45,7 @@ repos:
     rev: v3.29.1
     hooks:
       - id: commitizen
-        stages: [ commit-msg ]
+        stages: [commit-msg]
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.42.0
@@ -57,7 +66,7 @@ repos:
     rev: 0.2.2
     hooks:
       - id: checkmake
-        args: [ --config=./.checkmake-config.ini ]
+        args: [--config=./.checkmake-config.ini]
 
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
     rev: '3.0.3'
@@ -77,4 +86,16 @@ repos:
     hooks:
       - id: poetry-check
       - id: poetry-lock
-        args: [ "--no-update" ]
+        args: ['--no-update']
+
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.29.3
+    hooks:
+      - id: check-taskfile
+      - id: check-github-workflows
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        args: ['--no-warnings']

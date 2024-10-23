@@ -24,9 +24,9 @@ tasks:
 
   minimal:
     internal: true
-    desc: Minimal setup for running task as configuration manager (documentation)
+    desc: Minimal setup for running task as config manager (documentation)
     prompt: INSTALL AND SYMLINK TASK, ARE YOU CERTAIN?
-    platforms: [ linux ]
+    platforms: [linux]
     cmds:
       - bash "{{.ROOT_DIR}}/installation/linux/minimal-setup.sh"
       - task: helper:assert

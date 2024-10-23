@@ -32,7 +32,7 @@ tasks:
 
   brew:
     desc: Installing zsh and minimal packages
-    platforms: [ darwin ]
+    platforms: [darwin]
     internal: true
     cmds:
       - task: helper:assert
@@ -48,7 +48,7 @@ tasks:
 
   yay:
     desc: Installing zsh and minimal packages
-    platforms: [ linux ]
+    platforms: [linux]
     internal: true
     cmds:
       - task: helper:assert

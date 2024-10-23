@@ -8,19 +8,15 @@ charset = utf-8
 indent_style = space
 tab_width = 4
 
-[{*.yaml,*.yml}]
+[*.{yml,yaml,toml,json}]
 indent_size = 2
+ij_yaml_spaces_within_braces = false
+ij_yaml_spaces_within_brackets = false
 
 [**/makefile*]
 indent_size = 8
 indent_style = tab
 max_line_length = 120
-
-[*.toml]
-indent_size = 2
-
-[*.json]
-indent_size = 4
 
 [COMMIT_EDITMSG]
 indent_size = 4
@@ -28,7 +24,6 @@ max_line_length = 80
 
 [*.patch]
 trim_trailing_whitespace = false
-
 
 [{*.bash,*.sh,*.zsh}]
 indent_size = 2

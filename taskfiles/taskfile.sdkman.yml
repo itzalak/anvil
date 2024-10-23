@@ -27,7 +27,7 @@ tasks:
           REQUIRED_TOOLS: curl
 
   setup:
-    deps: [ assert ]
+    deps: [assert]
     desc: Setup SDKMAN
     cmds:
       - task: install

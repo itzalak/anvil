@@ -31,7 +31,7 @@ tasks:
     silent: true
 
   pipx:
-    deps: [ assert ]
+    deps: [assert]
     internal: true
     desc: Install pipx packages of poetry and commitizen
     cmds:
@@ -47,9 +47,9 @@ tasks:
           REQUIRED_TOOLS: cz, poetry, pre-commit, virtualenv
 
   pynvim:
-    deps: [ assert ]
+    deps: [assert]
     internal: true
-    platforms: [ darwin ]
+    platforms: [darwin]
     desc: Install pynvim (extra for neovim)
     cmds:
       - cmd: python3 -m pip install --user --upgrade pynvim

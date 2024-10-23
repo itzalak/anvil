@@ -14,14 +14,13 @@ tasks:
 
   assert:
     cmds:
-      - for: { var: REQUIRED_TOOLS, split: ',', as: TOOL }
-        cmd: '[ -n "$(which {{ .TOOL }})" ] || (echo "ERROR: `{{ .TOOL }}` not found" && exit 1;)'
-    silent: true
-    internal: true
-
-  validate:
-    cmds:
-      - for: { var: VARIABLES, split: ',', as: VARS }
-        cmd: '[ -n "$(echo ${{ .VARS }})" ] || (echo "ERROR: `{{ .VARS }}` not found" && exit 1;)'
+      - for:
+          var: REQUIRED_TOOLS
+          split: ','
+          as: TOOL
+        cmd: |
+          [ -n "$(which {{ .TOOL }})" ] || ( \
+            echo "ERROR: `{{ .TOOL }}` not found" && exit 1; \
+          )
     silent: true
     internal: true

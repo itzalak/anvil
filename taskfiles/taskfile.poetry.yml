@@ -20,7 +20,7 @@ tasks:
           REQUIRED_TOOLS: poetry
 
   setup:
-    deps: [ assert ]
+    deps: [assert]
     desc: Poetry local setup and install
     internal: true
     cmds:
@@ -31,21 +31,21 @@ tasks:
     silent: true
 
   set-local-venv:
-    deps: [ assert ]
+    deps: [assert]
     desc: Set poetry venv location to project
     internal: true
     cmds:
       - poetry config virtualenvs.in-project true
 
   get-local-venv:
-    deps: [ assert ]
+    deps: [assert]
     desc: Get poetry environment info (documentation)
     internal: true
     cmds:
       - poetry env info --path
 
   delete-local-venv:
-    deps: [ assert ]
+    deps: [assert]
     desc: Delete the virtual environment
     internal: true
     cmds:
@@ -53,14 +53,14 @@ tasks:
       - rm -rf venv
 
   install:
-    deps: [ assert ]
+    deps: [assert]
     desc: Install poetry dependencies
     internal: true
     cmds:
       - poetry install
 
   update:
-    deps: [ assert ]
+    deps: [assert]
     desc: Update poetry dependencies
     internal: true
     cmds:
@@ -68,7 +68,7 @@ tasks:
       - poetry self update
 
   test:
-    deps: [ assert ]
+    deps: [assert]
     desc: Run tests using poetry (documentation)
     internal: true
     cmds:
