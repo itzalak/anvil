@@ -3,8 +3,7 @@ function fif
     set RG_PREFIX "rg --column --line-number --no-heading --color=always --hidden --glob='!.git' --smart-case"
     set INITIAL_QUERY (string join ' ' $argv)
     : | fzf --ansi --disabled --query "$INITIAL_QUERY" \
-        --header 'Options >>> CTRL-Y: Copy filepath to clipboard' \
-        --prompt 'Find in file > ' \
+        --prompt 'CTRL-Y (Copy path) | Find in file > ' \
         --bind "start:reload:$RG_PREFIX {q}" \
         --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
         --delimiter : \

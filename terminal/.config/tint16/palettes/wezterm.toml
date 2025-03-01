@@ -1,0 +1,37 @@
+# Tint16 generated palette
+# Theme: "Tokyonight Moon"
+# Author: "Folke (https://github.com/folke/tokyonight.nvim)"
+
+[colors]
+ansi = [
+    '#1b1d2b',
+    '#ff757f',
+    '#c3e88d',
+    '#ffc777',
+    '#82aaff',
+    '#c099ff',
+    '#86e1fc',
+    '#828bb8',
+]
+brights = [
+    '#444a73',
+    '#ff757f',
+    '#c3e88d',
+    '#ffc777',
+    '#82aaff',
+    '#c099ff',
+    '#86e1fc',
+    '#c8d3f5',
+]
+cursor_border = '#c8d3f5'
+cursor_bg = '#1b1d2b'
+cursor_fg = '#444a73'
+background = '#222436'
+foreground = '#c8d3f5'
+selection_bg = '#444a73'
+selection_fg = '#c8d3f5'
+
+[colors.indexed]
+
+[metadata]
+name = 'Wezterm'

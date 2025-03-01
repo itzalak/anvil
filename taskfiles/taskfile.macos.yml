@@ -17,20 +17,8 @@ tasks:
     platforms: [darwin]
     cmds:
       - task: :brew:setup
-      - task: :zsh:setup
-      # this is no longer accurate, neovim is outside this installation
-      # is also missing terminal and eventually zsh should be replaced by it
-      - task: :stow:macos
-      - task: :zimfw:install
-      - task: :zsh:shell
-      - task: :sdkman:sdkman
+      - task: stow
       - task: settings
-
-  update:
-    desc: Run update tasks
-    platforms: [darwin]
-    cmds:
-      - task: :brew:refresh
 
   settings:
     desc: Apply macOS defaults
@@ -38,5 +26,23 @@ tasks:
     internal: true
     prompt: WILL UPDATE MACOS DEFAULT SETTINGS, ARE YOU CERTAIN?
     cmds:
-      # This no longer works since macos last update
+      # TODO: This no longer works since macos last update
       - installation/macos/macos-defaults.sh
+
+  stow:
+    desc: Symlink macos packages
+    cmds:
+      - task: assert
+        vars:
+          REQUIRED_TOOLS: stow
+      - "rm -rf {{.HOME}}/.config/hypr"
+      - "stow --restow --verbose --dir={{.ROOT_DIR}} --target={{.HOME}} macos"
+
+
+  destow:
+    desc: Destow macos packages
+    cmds:
+      - task: assert
+        vars:
+          REQUIRED_TOOLS: stow
+      - "stow --delete --verbose --dir={{.ROOT_DIR}} --target={{.HOME}} macos"

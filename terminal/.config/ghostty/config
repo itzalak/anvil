@@ -35,13 +35,9 @@ keybind = alt+shift+h=previous_tab
 keybind = alt+shift+l=next_tab
 keybind = alt+shift+q=close_surface
 
-keybind = global:ctrl+shift+alt+t=toggle_quick_terminal
-quick-terminal-position = top
-quick-terminal-screen = mouse
-quick-terminal-animation-duration = 0.2
-
 # Config files
 config-file = ?../decorator/output/ghostty
+config-file = ?../tint16/palettes/ghostty
 # os specific configurations.
 config-file = ?macos.conf
 config-file = ?linux.conf

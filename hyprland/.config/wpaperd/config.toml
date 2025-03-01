@@ -1,0 +1,10 @@
+[default]
+duration = "10m"
+mode = "center"
+sorting = "ascending"
+transition-time = 6000
+
+[any]
+path = "~/foundry/dotcachy/wallpapers"
+
+[default.transition.fade]

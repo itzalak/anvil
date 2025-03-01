@@ -1,0 +1,122 @@
+// -*- mode: jsonc -*-
+{
+    "height": 40,
+    "spacing": 4,
+    "margin": "15 15 0 15",
+    "reload_style_on_change": true,
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "hyprland/submap",
+        "privacy"
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "wireplumber",
+        "temperature",
+        "bluetooth",
+        "network",
+        "battery",
+        "clock",
+        "tray"
+    ],
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "show-special": true
+    },
+    "hyprland/submap": {
+        "format": "  {}",
+        "tooltip": true,
+        "on-click": "hyprctl dispatch submap reset"
+    },
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁",
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-middle": "helvum",
+        "format-icons": [
+            "󰕿",
+            "󰖀",
+            "󰕾"
+        ]
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰾪"
+        }
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%R}",
+        "format-alt": "{:%A, %Y.%m.%d, %R}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format-critical": " {temperatureC}°C",
+        "format": " {temperatureC}°C"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}",
+        "format-icons": [
+            "󰁻",
+            "󰁾",
+            "󰁿",
+            "󰂂",
+            "󰁹"
+        ],
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {capacity}%"
+    },
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "󰈀",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "󰤭",
+        "format-alt": "  {essid} ({signalStrength}%)"
+    },
+    "bluetooth": {
+        "format": "󰂯 {status}",
+        "format-disabled": "󰂲",
+        "format-off": "󰂲",
+        "format-connected": "󰂯 {num_connections}",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+    "privacy": {
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true
+            },
+            {
+                "type": "audio-out",
+                "tooltip": true
+            }
+        ]
+    }
+}

@@ -1,0 +1,9 @@
+// -*- mode: jsonc -*-
+{
+    "output": [
+        "HDMI-A-1"
+    ],
+    "include": [
+        "~/.config/waybar/config.jsonc"
+    ]
+}

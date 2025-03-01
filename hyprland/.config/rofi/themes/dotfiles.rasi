@@ -1,0 +1,109 @@
+//
+//       ____        _____
+//      / __ \____  / __(_)
+//     / /_/ / __ \/ /_/ /
+//    / _, _/ /_/ / __/ /
+//   /_/ |_|\____/_/ /_/
+//
+// https://github.com/davatorium/rofi/blob/next/doc/rofi-theme.4.markdown
+
+// Colors
+@import "~/.config/tint16/palettes/rofi-colors.rasi"
+
+* {
+    cursor:                     pointer;
+    background-color:           @background;
+    text-color:			        @foreground;
+}
+
+window {
+    border:                     2px;
+    border-radius:              15px;
+    border-color:               @accent;
+    width:                      20%;
+    height:                     30%;
+    padding:                    1% 1%;
+}
+
+mainbox {
+    background-color:          transparent;
+    children:                  [ "inputbar", "listview" ];
+}
+
+inputbar {
+    enabled:                    true;
+    children:                   [ textbox, entry ];
+    border-radius:              5px;
+}
+
+textbox {
+    content:                    "  ";
+    expand:                     false;
+    text-color:                 @accent;
+}
+
+entry {
+    enabled:                    true;
+    expand:                     true;
+    background-color:           transparent;
+    text-color:                 @accent;
+    cursor:                     text;
+    placeholder:                "Search...";
+    placeholder-color:          inherit;
+    padding:                    0 0 0 16px;
+}
+
+listview {
+    enabled:                    true;
+    columns:                    1;
+    lines:                      6;
+    cycle:                      true;
+    dynamic:                    true;
+    scrollbar:                  false;
+    layout:                     vertical;
+    reverse:                    false;
+    fixed-columns:              true;
+    fixed-height:               true;
+    background-color:           @background;
+    text-color:                 @foreground;
+    padding:                    10px 0 0 0;
+}
+
+element {
+    enabled:                    true;
+    background-color: 		    @background;
+    border-color:               transparent;
+    background-color:           @background;
+    text-color:                 @foreground;
+    border-radius:              5px;
+}
+
+element-icon {
+    background-color:           transparent;
+    text-color:                 inherit;
+    size:                       32px;
+    padding:                    0 15px 0 8px;
+}
+
+element.normal.normal {
+    text-color:       			@foreground;
+}
+
+element.normal.active {
+    text-color:       			@yellow;
+}
+
+element.selected.normal {
+    background-color: 			@accent;
+    text-color:                 @gray;
+}
+
+element.selected.active {
+    background-color: 			@accent;
+    text-color:       			@yellow;
+}
+
+element-text {
+    background-color: 			inherit;
+    text-color:       			inherit;
+}
