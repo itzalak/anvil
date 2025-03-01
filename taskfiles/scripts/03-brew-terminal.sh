@@ -2,16 +2,6 @@
 
 set -uo pipefail
 
-# Define some colors for output
-GREEN=$(tput setaf 2)
-RESET=$(tput sgr0)
-
-# Print an info message
-function print_info() {
-  echo
-  echo -e "${GREEN}$1${RESET}"
-}
-
 PKGS=(
   bash-completion
   bat
@@ -40,17 +30,16 @@ CASKS=(
   font-iosevka-term-nerd-font
   font-noto-mono
   font-noto-emoji
-  font-zed-mono-nerd-font
 )
 
-print_info "Installing terminal packages"
+echo "Installing terminal packages"
 
 for PKG in "${PKGS[@]}"; do
-  print_info "INSTALLING PACKAGE: $PKG"
+  echo "INSTALLING PACKAGE: $PKG"
   brew install "$PKG"
 done
 
 for CASK in "${CASKS[@]}"; do
-  print_info "INSTALLING PACKAGE: $CASK"
+  echo "INSTALLING PACKAGE: $CASK"
   brew install --cask "$CASK"
 done

@@ -24,179 +24,61 @@ tasks:
           )
     silent: true
     internal: true
-    vars:
-      REQUIRED_TOOLS: pacman, yay
 
-  # TODO: find a way to ask before every step
-  # TODO: figure out the order of execution and how to call it from here
-  setup:
-    deps: [assert]
-    internal: true
-    desc: Install linux
+  minimal:
+    desc: Minimal installation
     platforms: [linux]
     cmds:
-      - task: base
-      - task: yay
-      - task: wifibluetooth
-      - task: audio
-      - task: config
-      - task: dev
-      - task: :sdkman:sdkman
+      - task: assert
+        vars:
+          REQUIRED_TOOLS: pacman
+      - "{{.ROOT_DIR}}/taskfiles/scripts/00-cachy-minimal.sh"
+
+  install_linux_common:
+    desc: Ordered installation of common packages
+    platforms: [linux]
+    prompt: Experimental, might fail! Continue?
+    cmds:
+      - task: :terminal:terminal
+      - task: :neovim:neovim
+
+  install_linux_user:
+    desc: Ordered installation of user packages
+    platforms: [linux]
+    prompt: Experimental, might fail! Continue?
+    cmds:
       - task: :python:python
-      - task: productivity
-      - task: keyboard
-      - task: mouse
-      - task: :submodules:init
-      - task: :zimfw:install
-      - task: :zsh:shell
+      - task: :sdkman:sdkman
 
-  update:
-    deps: [assert]
-    desc: Run update tasks
-    platforms: [linux]
-    cmds:
-      - yay -Syu --noconfirm
-      # TODO: zimfw should do well for himself
-      - task: :zimfw:refresh
-        # TODO: Missing pipx update!
-
-  k2:
-    desc: Enable keychron fn keys
-    platforms: [linux]
-    cmds:
-      - sudo systemctl start keychron
-
-  base:
-    deps: [assert]
-    internal: true
+  development:
     desc: Install development packages
     platforms: [linux]
     cmds:
-      - "{{.ROOT_DIR}}/installation/linux/01-base.sh"
-
-  yay:
-    internal: true
-    desc: Install development packages
-    platforms: [linux]
-    status:
-      - test -f "{{.YAY_BIN}}"
-    cmds:
-      - mkdir -p ~/foundry/depository
-      - "{{.ROOT_DIR}}/installation/linux/02-yay.sh"
-    vars:
-      YAY_BIN:
-        sh: which yay || true
-
-  wifibluetooth:
-    deps: [assert]
-    internal: true
-    desc: Install development packages
-    platforms: [linux]
-    cmds:
-      - "{{.ROOT_DIR}}/installation/linux/04-wireless-bluetooth.sh"
-
-  audio:
-    deps: [assert]
-    internal: true
-    desc: Install development packages
-    platforms: [linux]
-    cmds:
-      - "{{.ROOT_DIR}}/installation/linux/05-audio.sh"
+      - task: assert
+        vars:
+          REQUIRED_TOOLS: pacman, python, java, pyenv
+      - "{{.ROOT_DIR}}/taskfiles/scripts/21-paru-development.sh"
 
   productivity:
-    deps: [assert]
-    internal: true
-    desc: Install development packages
+    desc: Install productivity packages
     platforms: [linux]
     cmds:
-      - "{{.ROOT_DIR}}/installation/linux/07-productivity.sh"
-
-  config:
-    deps: [assert]
-    internal: true
-    desc: Install development packages
-    platforms: [linux]
-    vars:
-      CONFIG: "{{.HOME}}/.config"
-      EXTRAS: "{{.ROOT_DIR}}/installation/linux/extras"
-    cmds:
-      - mkdir -p "{{.CONFIG}}/gtk-3.0"
-      - mkdir -p "{{.HOME}}/.local/bin"
-      - rm -rf "{{.CONFIG}}/mimeapps.list"
-      - cp "{{.EXTRAS}}/mimeapps.list" "{{.CONFIG}}"
-      - rm -rf "{{.HOME}}/user-dirs"
-      - cp "{{.EXTRAS}}/user-dirs.dirs" "{{.CONFIG}}"
-
-  dev:
-    deps: [assert]
-    internal: true
-    desc: Install development packages
-    platforms: [linux]
-    cmds:
-      - "{{.ROOT_DIR}}/installation/linux/23-development.sh"
-
-  keyboard:
-    deps: [assert]
-    internal: true
-    desc: Install development packages
-    platforms: [linux]
-    cmds:
-      - "{{.ROOT_DIR}}/installation/linux/31-keyboard.sh"
-
-  mouse:
-    deps: [assert]
-    internal: true
-    desc: Install development packages
-    platforms: [linux]
-    status:
-      - test -f "{{.LOGID_BIN}}"
-    cmds:
-      - "{{.ROOT_DIR}}/installation/linux/32-mouse.sh"
-    vars:
-      LOGID_BIN:
-        sh: which logid || true
+      - task: assert
+        vars:
+          REQUIRED_TOOLS: pacman, java, python
+      - "{{.ROOT_DIR}}/taskfiles/scripts/22-paru-productivity.sh"
 
   games:
-    deps: [assert]
-    internal: true
-    desc: Install development packages
+    desc: Install games packages
     platforms: [linux]
     cmds:
-      - "{{.ROOT_DIR}}/installation/linux/53-gaming.sh"
+      - task: assert
+        vars:
+          REQUIRED_TOOLS: pacman, java
+      - "{{.ROOT_DIR}}/taskfiles/scripts/30-cachy-games.sh"
 
-  awesome:
-    deps: [assert]
-    desc: Install linux
+  keyboard:
+    desc: Enable keyboard fn keys
     platforms: [linux]
     cmds:
-      - task: setup
-      - task: awesome-setup
-      - task: :stow:awesome
-
-  awesome-setup:
-    deps: [assert]
-    internal: true
-    desc: Install awesome packages
-    platforms: [linux]
-    cmds:
-      - cmd: "{{.ROOT_DIR}}/installation/linux/50-awesomewm.sh"
-        ignore_error: true
-
-  qtile:
-    deps: [assert]
-    desc: Install linux
-    platforms: [linux]
-    cmds:
-      - task: setup
-      - "{{.ROOT_DIR}}/installation/linux/51-qtile.sh"
-      - task: :stow:qtile
-
-  gnome:
-    deps: [assert]
-    desc: Install linux
-    platforms: [linux]
-    cmds:
-      - task: setup
-      - "{{.ROOT_DIR}}/installation/linux/52-gnome.sh"
-      - task: :stow:gnome
-      - task: games
+      - "{{.ROOT_DIR}}/taskfiles/scripts/80-keyboard.sh"

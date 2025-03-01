@@ -12,14 +12,27 @@ tasks:
         task --list
     silent: true
 
+  assert:
+    cmds:
+      - for:
+          var: REQUIRED_TOOLS
+          split: ','
+          as: TOOL
+        cmd: |
+          [ -n "$(which {{ .TOOL }})" ] || ( \
+            echo "ERROR: `{{ .TOOL }}` not found" && exit 1; \
+          )
+    silent: true
+    internal: true
+
   linux:
     internal: true
     desc: Minimal setup for running task as config manager (documentation)
     prompt: INSTALL AND SYMLINK TASK, ARE YOU CERTAIN?
     platforms: [linux]
     cmds:
-      - "{{.ROOT_DIR}}/installation/linux/minimal-setup.sh"
-      - task: :helper:assert
+      - "{{.ROOT_DIR}}/taskfiles/00-cachy-minimal.sh"
+      - task: assert
         vars:
           REQUIRED_TOOLS: pacman
 
@@ -29,7 +42,7 @@ tasks:
     prompt: INSTALL BREW AND MINIMAL PACKAGES, ARE YOU CERTAIN?
     platforms: [darwin]
     cmds:
-      - "{{.ROOT_DIR}}/installation/macos/minimal-setup.sh"
-      - task: :helper:assert
+      - "{{.ROOT_DIR}}/taskfiles/00-brew-minimal.sh"
+      - task: assert
         vars:
           REQUIRED_TOOLS: brew

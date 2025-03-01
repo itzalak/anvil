@@ -1,0 +1,15 @@
+//# Tint16 generated palette
+//# Theme: "Tokyonight Moon"
+//# Author: "Folke (https://github.com/folke/tokyonight.nvim)"
+
+* {
+    transparent:    #22243620;
+    background:     #222436;
+    foreground:     #c8d3f5;
+    red:            #ff757f;
+    green:          #c3e88d;
+    yellow:         #ffc777;
+    blue:           #82aaff;
+    gray:           #444a73;
+    accent:         #c3e88d;
+}

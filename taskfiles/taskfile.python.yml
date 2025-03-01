@@ -1,7 +1,5 @@
 version: '3'
 
-# TODO: Remove and refactor helper.
-# TODO: Create variable for py versions
 tasks:
 
   default:
@@ -37,14 +35,13 @@ tasks:
 
   linux_installation:
     internal: true
-    desc: Minimal installation of python related packages with pacman
+    desc: Minimal installation of python and pipx related packages with pacman
     platforms: [linux]
     cmds:
       - task: assert
         vars:
           REQUIRED_TOOLS: pacman
-      - echo "TODO not installation script for anvil yet!"
-      # - "{{.ROOT_DIR}}/taskfiles/scripts/20-pacman-python.sh"
+      - "{{.ROOT_DIR}}/taskfiles/scripts/20-pacman-python.sh"
 
   pipx:
     internal: true

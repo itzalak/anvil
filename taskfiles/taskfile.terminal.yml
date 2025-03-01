@@ -2,12 +2,8 @@ version: '3'
 
 tasks:
 
-  # The purpose of this file is to encapsulate all the operations related to neovim
-  # from installation, to stow operations
-  # Some special care is required since it should be usable in macos and linux
-  # NOTE: the folder creation is required for stow ignore to work!
-  # Currently based on v8 (guards! guards!)
-  # TODO: Zsh configuration is missing from this file
+  # The purpose of this file is to encapsulate all the operations related to
+  # terminal apps from installation, to stow operations
 
   default:
     internal: true
@@ -70,6 +66,7 @@ tasks:
       - rm -rf {{.HOME}}/.bash_profile
       - rm -rf {{.HOME}}/.bash_logout
       - rm -rf {{.HOME}}/.config/fish
+      - rm -rf {{.HOME}}/.config/ghostty
       - rm -rf {{.HOME}}/.zshrc
 
   directories:
@@ -82,6 +79,7 @@ tasks:
       - mkdir -p {{.HOME}}/.config/ghostty
       - mkdir -p {{.HOME}}/.config/kitty
       - mkdir -p {{.HOME}}/.config/zsh
+      - mkdir -p {{.HOME}}/.cache/zsh
 
   stow:
     desc: Symlink terminal and shell configuration
@@ -116,3 +114,12 @@ tasks:
         vars:
           REQUIRED_TOOLS: stow
       - "stow --delete --verbose --dir={{.ROOT_DIR}} --target={{.HOME}} terminal"
+
+  shell:
+    desc: Changing the default shell to zsh
+    internal: true
+    cmds:
+      - echo 'Set zsh as default shell'
+      - echo 'chsh -s "$(which zsh)"'
+      - echo 'sudo chsh -s "$(which zsh)"'
+    silent: true

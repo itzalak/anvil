@@ -19,14 +19,29 @@ Darwin)
   ;;
 esac
 
-export FZF_DEFAULT_OPTS="--preview-window='right,60%,border-bold,+{2}+3/3,~3' --color 'header:#ffc700,border:#ffc700' --info='inline-right' --no-separator --no-scrollbar --padding 2%"
+export FZF_DEFAULT_OPTS="--style full \
+        --preview 'fzf-preview.sh {}' \
+        --bind 'focus:transform-header:file --brief {}' \
+        --color=gutter:#1e2030 \
+        --color=header:#ff966c \
+        --color=marker:#ff007c \
+        --color=pointer:#ff007c \
+        --color=prompt:#828bb8 \
+        --color=scrollbar:#82aaff \
+        --color 'preview-border:#82aaff,preview-label:#82aaff' \
+        --color 'list-border:#82aaff,list-label:#82aaff' \
+        --color 'input-border:#82aaff,input-label:#82aaff' \
+        --color 'header-border:#ffc777,header-label:#ffc777'\
+        --info='inline-right' \
+        --no-separator \
+        --no-scrollbar \
+        --padding 2%"
 
 # Find command
 # Pressing `ESC` aborts, printing the modified or incomplete command
 fcmd() {
   printf '%s\n' "$(fc -rnl 1 | fzf -q "$1" \
-    --header 'Options >>> Press ESC to keep modified command ' \
-    --prompt 'Find Command> ' \
+    --prompt 'ESC (keep promtp) | Find Command> ' \
     --bind 'esc:print-query+abort')"
 }
 
@@ -40,8 +55,7 @@ fif() {
   RG_PREFIX="rg --column --line-number --no-heading --color=always --hidden --glob='!.git' --smart-case"
   INITIAL_QUERY="${*:-}"
   : | fzf --ansi --disabled --query "$INITIAL_QUERY" \
-    --header 'Options >>> CTRL-Y: Copy filepath to clipboard' \
-    --prompt 'Find in file > ' \
+    --prompt 'CTRL-Y (Copy path) | Find in file > ' \
     --bind "start:reload:$RG_PREFIX {q}" \
     --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
     --delimiter : \
@@ -55,12 +69,10 @@ ffile() {
   FD_PREFIX="fd --hidden --no-ignore --ignore-case --type file"
   INITIAL_QUERY="${*:-}"
   : | fzf --ansi --disabled --query "$INITIAL_QUERY" \
-    --header 'Options >>> CTRL-Y: Copy filepath to clipboard' \
-    --prompt 'Find File > ' \
+    --prompt 'CTRL-Y (Copy path) | Find File > ' \
     --bind "start:reload:$FD_PREFIX {q}" \
     --bind "change:reload:sleep 0.1; $FD_PREFIX {q} || true" \
     --delimiter : \
-    --preview 'bat --color=always {}' \
     --bind "ctrl-y:execute-silent(echo {1} | '$CLIPBOARD_CMD')+abort" \
     --bind 'enter:become(nvim {1})+abort'
 }
@@ -70,8 +82,7 @@ fdir() {
   FD_PREFIX="fd --hidden --no-ignore --ignore-case --type directory"
   INITIAL_QUERY="${*:-}"
   DIR="$(: | fzf --ansi --disabled --query "$INITIAL_QUERY" \
-    --header 'Options >>> CTRL-Y: Copy filepath to clipboard' \
-    --prompt 'Find Directory > ' \
+    --prompt 'CTRL-Y (Copy path) | Find Directory > ' \
     --bind "start:reload:$FD_PREFIX {q}" \
     --bind "change:reload:sleep 0.1; $FD_PREFIX {q} || true" \
     --delimiter : \
@@ -85,12 +96,10 @@ fde() {
   FD_PREFIX="fd --hidden --no-ignore --ignore-case --extension"
   INITIAL_QUERY="${*:-}"
   : | fzf --ansi --disabled --query "$INITIAL_QUERY" \
-    --header 'Options >>> CTRL-Y: Copy filepath to clipboard' \
-    --prompt 'Find by Extension > ' \
+    --prompt 'CTRL-Y (Copy path) | Find by Extension > ' \
     --bind "start:reload:$FD_PREFIX {q}" \
     --bind "change:reload:sleep 0.1; $FD_PREFIX {q} || true" \
     --delimiter : \
-    --preview 'bat --color=always {}' \
     --bind "ctrl-y:execute-silent(echo {} | '$CLIPBOARD_CMD')+abort" \
     --bind 'enter:become(nvim {1})'
 }
@@ -100,8 +109,7 @@ fide() {
   FD_PREFIX="zoxide query -l"
   INITIAL_QUERY="${*:-}"
   : | fzf --ansi --disabled --query "$INITIAL_QUERY" \
-    --header 'Options >>> ENTER: idea / CTRL-N nvim / CTRL-Y pycharm' \
-    --prompt 'Open in IDE > ' \
+    --prompt 'ENTER(IDEA)|CTR+N(NV)|CTR+Y(PY)| Open in IDE > ' \
     --bind "start:reload:$FD_PREFIX {q}" \
     --bind "change:reload:sleep 0.1; $FD_PREFIX {q} || true" \
     --delimiter : \

@@ -4,18 +4,12 @@ includes:
   brew: "./taskfiles/taskfile.brew.yml"
   gotask: "./taskfiles/taskfile.gotask.yml"
   foundry: "./taskfiles/taskfile.foundry.yml"
-  helper: "./taskfiles/taskfile.helper.yml"
   linux: "./taskfiles/taskfile.linux.yml"
   macos: "./taskfiles/taskfile.macos.yml"
   neovim: "./taskfiles/taskfile.neovim.yml"
-  poetry: "./taskfiles/taskfile.poetry.yml"
-  precommit: "./taskfiles/taskfile.precommit.yml"
   python: "./taskfiles/taskfile.python.yml"
   sdkman: "./taskfiles/taskfile.sdkman.yml"
-  stow: "./taskfiles/taskfile.stow.yml"
   terminal: "./taskfiles/taskfile.terminal.yml"
-  zimfw: "./taskfiles/taskfile.zimfw.yml"
-  zsh: "./taskfiles/taskfile.zsh.yml"
 
 tasks:
 
@@ -30,27 +24,76 @@ tasks:
         task --list
     silent: true
 
-  setup:
-    desc: Poetry and pre-commit setup
+  assert:
     cmds:
-      - task: poetry:setup
-      - task: precommit:setup
+      - for:
+          var: REQUIRED_TOOLS
+          split: ','
+          as: TOOL
+        cmd: |
+          [ -n "$(which {{ .TOOL }})" ] || ( \
+            echo "ERROR: `{{ .TOOL }}` not found" && exit 1; \
+          )
+    silent: true
+    internal: true
+    vars:
+      REQUIRED_TOOLS: pre-commit, poetry
+
+  setup:
+    deps: [assert]
+    desc: Set up poetry and pre-commit
+    cmds:
+      - task: precommit_setup
+      - task: poetry_setup
 
   update:
-    desc: Poetry and pre-commit update
+    deps: [assert]
+    desc: Update poetry and pre-commit
     cmds:
-      - task: poetry:update
-      - task: precommit:update
+      - task: poetry_update
+      - pre-commit autoupdate
 
-  pcrun:
-    aliases: [run]
+  precommit_setup:
+    internal: true
+    deps: [assert]
+    desc: Initialize pre-commit
+    cmds:
+      - pre-commit install
+      - pre-commit autoupdate
+
+  poetry_setup:
+    internal: true
+    deps: [assert]
+    desc: Poetry local setup and install
+    cmds:
+      - poetry config virtualenvs.in-project true
+      - rm -rf .venv
+      - poetry install
+      - poetry env info --path
+
+  poetry_update:
+    internal: true
+    deps: [assert]
+    desc: Update poetry dependencies
+    cmds:
+      - poetry update
+
+  run:
+    aliases: [pre_commit_run]
+    deps: [assert]
     desc: Run pre-commit on all files
     cmds:
-      - task: precommit:run
+      - pre-commit run --color always --all-files
 
-  os-update:
-    aliases: [os]
-    desc: Update and refresh system
+  poetry:
+    deps: [assert]
+    desc: Refresh poetry environment
     cmds:
-      - task: macos:update
-      - task: linux:update
+      - poetry install
+
+  test:
+    aliases: [poetry_test]
+    deps: [assert]
+    desc: Run tests using poetry
+    cmds:
+      - poetry run pytest

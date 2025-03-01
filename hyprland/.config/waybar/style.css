@@ -1,0 +1,218 @@
+* {
+  font-family: "Iosevka Nerd Font", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/*TODO: can I default if not present to not fail on loading?*/
+@import "../tint16/palettes/waybar.css";
+
+/*Bar settings*/
+window#waybar {
+  background-color: @background;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+tooltip {
+  background: @background;
+  opacity: 0.8;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: @foreground;
+}
+
+tooltip label {
+  color: @foreground;
+}
+
+/*Button settings*/
+button {
+  box-shadow: inset 0 -3px transparent;
+  padding: 0px 5px;
+  margin: 5px 2px;
+  border-radius: 10px;
+}
+
+button:hover {
+  box-shadow: inset 0 -3px @foreground;
+}
+
+/*Workspace button settings*/
+/*order matters, last one is applied in case of conflict*/
+/*e.g. hover only applies on special if after special*/
+/*or needs to override all fields*/
+#workspaces {
+  background: transparent;
+}
+
+#workspaces button {
+  background-color: @color0;
+  color: @foreground;
+}
+
+#workspaces button.urgent {
+  background-color: @color3;
+}
+
+#workspaces button.special {
+  color: @color3;
+  background-color: @color0;
+}
+
+#workspaces button:hover {
+  background: @color0;
+  color: @foreground;
+}
+
+#workspaces button.active {
+  background-color: @color8;
+  box-shadow: inset 0 -3px @color2;
+}
+
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 5px;
+}
+
+/*Submap settings*/
+#submap {
+  background-color: @color12;
+  padding: 0px 10px;
+  margin: 5px 2px;
+  border-radius: 10px;
+  box-shadow: inset 0 -3px @foreground;
+}
+
+/*Animations*/
+@keyframes blink {
+  to {
+    background-color: @foreground;
+    color: @background;
+  }
+}
+
+/*Module settings*/
+#clock,
+#battery,
+#bluetooth,
+#idle_inhibitor,
+#wireplumber,
+#temperature,
+#network,
+#tray {
+  padding: 0px 10px;
+  margin: 5px 2px;
+  border-radius: 10px;
+}
+
+#clock {
+  background-color: @color8;
+  color: @foreground;
+}
+
+#battery {
+  padding: 0 13px 0 13px;
+  background-color: @foreground;
+  color: @background;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @foreground;
+  background-color: @color12;
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+  background-color: @color1;
+  color: @foreground;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#wireplumber {
+  background-color: @background;
+  color: @foreground;
+}
+
+#temperature {
+  color: @background;
+  background-color: @foreground;
+}
+
+#temperature.critical {
+  background-color: @color1;
+}
+
+#tray {
+  color: @foreground;
+  background-color: @background;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: @color1;
+}
+
+#idle_inhibitor {
+  padding: 0 15px 0 10px;
+  color: @foreground;
+  background-color: @color8;
+}
+
+#bluetooth {
+  padding: 0 13px 0 10px;
+  color: @foreground;
+  background-color: @color8;
+}
+
+#network {
+  padding: 0 15px 0 10px;
+  color: @foreground;
+  background-color: @background;
+}
+
+#bluetooth.off,
+#idle_inhibitor.activated,
+#network.disconnected {
+  color: @background;
+  background-color: @color3;
+  box-shadow: inset 0 -3px @color1;
+}
+
+#wireplumber.muted {
+  padding: 0 13px 0 10px;
+  color: @background;
+  background-color: @color3;
+  box-shadow: inset 0 -3px @color1;
+}
+
+#privacy-item {
+  padding: 0px 10px;
+  margin: 5px 2px;
+  border-radius: 10px;
+}
+
+#privacy-item.screenshare {
+  background-color: @color3;
+  box-shadow: inset 0 -3px @color1;
+}
+
+#privacy-item.audio-in {
+  background-color: @color3;
+  box-shadow: inset 0 -3px @color1;
+}
+
+#privacy-item.audio-out {
+  background-color: @color8;
+  color: @foreground;
+  box-shadow: inset 0 -3px @color2;
+}

@@ -3,8 +3,7 @@ function fdir
     set FD_PREFIX "fd --hidden --no-ignore --ignore-case --type directory"
     set INITIAL_QUERY (string join ' ' $argv)
     set DIR ( : | fzf --ansi --disabled --query "$INITIAL_QUERY" \
-        --header 'Options >>> CTRL-Y: Copy filepath to clipboard' \
-        --prompt 'Find Directory > ' \
+        --prompt 'CTRL-Y (Copy path) | Find Directory > ' \
         --bind "start:reload:$FD_PREFIX {q}" \
         --bind "change:reload:sleep 0.1; $FD_PREFIX {q} || true" \
         --delimiter : \

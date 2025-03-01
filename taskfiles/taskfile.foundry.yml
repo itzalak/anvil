@@ -1,7 +1,7 @@
 version: '3'
 
-includes:
-  helper: "./taskfile.helper.yml"
+# TODO: Refactor and remove foundry in favour of depository
+# Update the scripts
 
 tasks:
 
@@ -16,11 +16,19 @@ tasks:
     silent: true
 
   assert:
-    internal: true
     cmds:
-      - task: helper:assert
-        vars:
-          REQUIRED_TOOLS: git, python3, poetry
+      - for:
+          var: REQUIRED_TOOLS
+          split: ','
+          as: TOOL
+        cmd: |
+          [ -n "$(which {{ .TOOL }})" ] || ( \
+            echo "ERROR: `{{ .TOOL }}` not found" && exit 1; \
+          )
+    silent: true
+    internal: true
+    vars:
+      REQUIRED_TOOLS: git, python3, poetry
 
   setup:
     deps: [assert]
