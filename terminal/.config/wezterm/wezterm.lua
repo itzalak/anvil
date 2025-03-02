@@ -1,13 +1,13 @@
-local wezterm = require "wezterm"
+local wezterm = require("wezterm")
 
 return {
-    font = wezterm.font_with_fallback {
+    font = wezterm.font_with_fallback({
         { family = "IosevkaTerm Nerd Font", weight = "Bold" },
         { family = "Iosevka Nerd Font", weight = "Bold" },
         { family = "Fira Code", weight = "Bold" },
         { family = "Material Design Icons", weight = "Bold" },
         { family = "Noto Color Emoji", weight = "Bold" },
-    },
+    }),
     warn_about_missing_glyphs = true,
     font_size = 13,
 
@@ -32,7 +32,7 @@ return {
     -- Coloscheme
     -- color_scheme = "Bright (base16)",
     color_scheme_dirs = {
-        os.getenv "HOME" .. "/.config/decorator/output",
+        os.getenv("HOME") .. "/.config/decorator/output",
     },
 
     color_scheme = "Wezterm",
@@ -48,27 +48,27 @@ return {
         {
             key = "d",
             mods = "SHIFT|ALT",
-            action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } },
+            action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }),
         },
         {
             key = "d",
             mods = "ALT",
-            action = wezterm.action { SplitVertical = { domain = "CurrentPaneDomain" } },
+            action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }),
         },
         {
             key = "q",
             mods = "CTRL|ALT",
-            action = wezterm.action { CloseCurrentPane = { confirm = false } },
+            action = wezterm.action({ CloseCurrentPane = { confirm = false } }),
         },
         {
             key = "]",
             mods = "ALT",
-            action = wezterm.action { ActivatePaneDirection = "Next" },
+            action = wezterm.action({ ActivatePaneDirection = "Next" }),
         },
         {
             key = "[",
             mods = "ALT",
-            action = wezterm.action { ActivatePaneDirection = "Next" },
+            action = wezterm.action({ ActivatePaneDirection = "Next" }),
         },
     },
 }

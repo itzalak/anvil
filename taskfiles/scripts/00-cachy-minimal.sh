@@ -6,21 +6,21 @@ set -uo pipefail
 # Requires installation of gnome through cachy
 
 PKGS=(
-	# Apps
-	bottom
-	ghostty
-	go-task
-	neovim
-	ripgrep
-	ripgrep-all
-	stow
-	yazi
-	cliphist
+  # Apps
+  bottom
+  ghostty
+  go-task
+  neovim
+  ripgrep
+  ripgrep-all
+  stow
+  yazi
+  cliphist
 )
 
 for PKG in "${PKGS[@]}"; do
-	echo "INSTALLING PACKAGE: $PKG"
-	sudo pacman -S "$PKG" --noconfirm --needed
+  echo "INSTALLING PACKAGE: $PKG"
+  sudo pacman -S "$PKG" --noconfirm --needed
 done
 
 # In linux, task is called go-task, to allow it to run normally is necessary to create a symlink.

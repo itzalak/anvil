@@ -7,8 +7,7 @@ TODO: outdated, must be refactored
 
 ## Installation
 
-- Arch Linux [installation](/installation/linux/README.md).
-- MacOS [installation](/installation/macos/README.md)
+// TODO:
 
 ### Requirements
 
@@ -18,21 +17,6 @@ TODO: outdated, must be refactored
 - zsh
 
 ## Configuration
-
-### Color scheme
-
-This setup is designed for integrating setting up the colorscheme for linux system, and it is heavily dependent on
-the `.Xresources` file.
-
-More information and details can be found in [decorator](/terminal/.config/decorator), scripts can be
-found for using a json color scheme file - I personally use [terminal.sexy](https://terminal.sexy/) to manipulate
-and tweak the color schemes, porting the result for `.Xresources` and any other required formats.
-
-It also works for macOS through `.Xresources` file, it configures mostly the terminals in that case.
-
-**WARN** the script does not fully account for macOS usage.
-
-- Currently using [the scream](https://github.com/itzalak/thescream.nvim)
 
 ### Zsh
 
@@ -75,7 +59,7 @@ Clone the anvil repository
 
 ```shell
 mkdir -p foundry
-git clone git@github.com:itzalak/anvil.git foundry/anvil
+git clone git@github.com:itzalak/anvil.git anvil
 ```
 
 ## Minimal setup
@@ -83,26 +67,18 @@ git clone git@github.com:itzalak/anvil.git foundry/anvil
 Run minimal linux installation setup manually
 
 ```shell
-./foundry/anvil/installation/linux/minimal-setup.sh
+./foundry/anvil/taskfiles/scripts/00-cachy-minimal.sh
 ```
 
 or
 
 ```shell
-curl -fsSL https://raw.githubusercontent.com/itzalak/anvil/refs/heads/main/installation/linux/minimal-setup.sh | bash
+curl -fsSL https://raw.githubusercontent.com/itzalak/anvil/refs/heads/main/taskfiles/scripts/00-cachy-minimal.sh | bash
 ```
 
 ## Task
 
-```shell
-task: linux:gnome
-```
-
-Setup foundry
-
-```shell
-task: foundry:setup
-```
+// TODO:
 
 ## Other environments
 

@@ -101,6 +101,7 @@ cask 'ghostty@tip'
 cask 'jetbrains-toolbox'
 cask 'keymapp'
 cask 'kitty'
+cask 'librewolf'
 cask 'microsoft-office'
 cask 'microsoft-teams'
 cask 'obsidian'
@@ -119,10 +120,10 @@ cask 'visualvm'
 brew 'gum'
 
 # Python: managed by pip, pipx and pyenv
-# https://raw.githubusercontent.com/itzalak/anvil/e868cb0d84777c6b15d9551ea3617a61f5aa2981/taskfiles/taskfile.python.yml
+# https://raw.githubusercontent.com/itzalak/anvil/blob/main/taskfiles/taskfile.python.yml
 
 # Java: managed by sdkman
-# https://raw.githubusercontent.com/itzalak/anvil/e868cb0d84777c6b15d9551ea3617a61f5aa2981/taskfiles/taskfile.sdkman.yml
+# https://raw.githubusercontent.com/itzalak/anvil/blob/main/taskfiles/taskfile.sdkman.yml
 
 # Terraform
 # terraform and tfenv conflict if both are installed

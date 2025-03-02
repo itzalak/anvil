@@ -1,5 +1,7 @@
 # macos
 
+TODO: revisit
+
 MacOS dotfiles
 Environment installation and configuration.
 Unless stated otherwise installations are done via terminal.
@@ -11,7 +13,7 @@ Minimal installation (automatic)
 For macos
 
 ```shell
-curl -fsSL https://raw.githubusercontent.com/itzalak/anvil/refs/heads/main/installation/macos/minimal-setup.sh | bash
+curl -fsSL https://raw.githubusercontent.com/itzalak/anvil/refs/heads/main/taskfiles/scripts/00-brew-minimal.sh | bash
 ```
 
 Setup ssh and git.
@@ -19,7 +21,7 @@ Clone the anvil repository.
 
 ```shell
 mkdir -p foundry
-git clone git@github.com:itzalak/anvil.git foundry/anvil
+git clone git@github.com:itzalak/anvil.git
 ```
 
 Follow up on [taskfile](/taskfiles/taskfile.macos.yml)
@@ -37,6 +39,8 @@ xcode-select --install
 ```
 
 ### brew
+
+NOTE: Already installed by the brew minimal curl step
 
 - [Homebrew](https://brew.sh/) is Apple missing package manager, is my preferred method to maintain packages.
 
@@ -62,28 +66,9 @@ brew install git
 softwareupdate --install-rosetta
 ```
 
-## Personal setup
-
-Most instructions should be also present in [taskfile](/taskfile.yml) or [makefile](/installation/macos/makefile)
-
 ### Mac defaults
 
-Settings for macos defaults can be found in [macos-defaults.sh](macos-defaults.sh)
-
-### Nvim
-
-Initiate git submodule
-
-```shell
-git submodule update --init "$HOME/foundry/anvil/neovim"
-
-```
-
-### Stow
-
-Symlink configurations like nvim and zsh to the proper folders [taskfile.stow.yml](/taskfiles/taskfile.stow.yml).
-
-Zsh should already be installed, but more complete installation setup can be found in [taskfile.zsh.yml](/taskfiles/taskfile.zsh.yml).
+Settings for macos defaults can be found in [macos-defaults.sh](../taskfiles/scripts/99-macos-defaults.sh)
 
 ### Brew
 
@@ -93,12 +78,4 @@ Set up all required application through brew
 brew bundle
 ```
 
-Packages required for my personal setup can be found in the [brewfile](Brewfile) and can be run using the following command
-
-```shell
-brew bundle --file "$HOME/foundry/anvil/installation/macos/Brewfile""
-```
-
-### Sdkman
-
-Used for installing java, kotlin, groovy, gradle, scala and maven. Instructions can be found in [02-sdkamn.zsh](legacy/02-sdkman.zsh)
+Packages required for my personal setup can be found in the [brewfile](../taskfiles/scripts/Brewfile) and can be run using the following command
