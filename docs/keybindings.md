@@ -12,14 +12,6 @@
 | <kbd>Meta</kbd> + <kbd>o</kbd>     | Move selected window between screens |         |
 | <kbd>Alt</kbd> + <kbd>p</kbd>      | Print screen selected area           |         |
 
-## Awesomewm keybindings
-
-| Keys                                                | Action                    |
-|:----------------------------------------------------|:--------------------------|
-| <kbd>Alt</kbd> + <kbd>t</kbd>                       | Toggle title bar          |
-| <kbd>Alt</kbd> + <kbd>r</kbd>                       | Reload displays           |
-| <kbd>Meta</kbd> + <kbd>Alt</kbd> + <kbd>Enter</kbd> | Open alternative terminal |
-
 ## Macos keybindings
 
 | Keys                               | Action       |

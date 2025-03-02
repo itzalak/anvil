@@ -4,7 +4,7 @@ version = "7.1.31"
 description = "Personal development laboratory"
 authors = [{ name = "Itzalak", email = "itzalak@tuta.io" }]
 readme = "README.md"
-keywords = ["dotfiles", "awesomewm", "archlinux", "macos"]
+keywords = ["dotfiles", "archlinux", "hyprland", "macos"]
 requires-python = ">=3.13"
 dependencies = [
   "pytest >= 8.3.3",

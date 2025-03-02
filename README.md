@@ -17,10 +17,6 @@ TODO: outdated, must be refactored
 - stow
 - zsh
 
-## Awesomewm
-
-Take look into [awesome readme](/awesome/.config/awesome/README.md)
-
 ## Configuration
 
 ### Color scheme
@@ -99,9 +95,7 @@ curl -fsSL https://raw.githubusercontent.com/itzalak/anvil/refs/heads/main/insta
 ## Task
 
 ```shell
-task: linux:awesome
 task: linux:gnome
-task: linux:qtile
 ```
 
 Setup foundry
