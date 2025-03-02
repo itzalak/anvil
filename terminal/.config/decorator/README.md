@@ -6,7 +6,6 @@ mostly from dark to light and vice-versa.
 Applications the scripts can update:
 
 - Alacritty
-- Awesomewm
 - Rofi (rasi theme)
 - Xresources (urxvt, polybar)
 

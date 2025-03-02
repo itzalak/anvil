@@ -23,8 +23,6 @@ it here at a later date.
 ## Goals and Ideas
 
 - Setup hyprland and play around with it.
-- also try to set it up PLUS xfce or gnome (light), I need very occasionally a "normal" OS, hyprland is very unstable.
-    - Might cause some issues with xorg vs wayland
 - Try [LibreWolf](https://librewolf.net/) as a privacy driven alternative to firefox
 - Try [Vivaldi](https://vivaldi.com/) when a chrome based browser is needed
 

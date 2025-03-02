@@ -7,8 +7,6 @@ Color schemes can be exported as json from terminal.sexy, examples can be found 
 This script loads a json source file, used to replace in memory the {{variables}} for all files inside
 decorator/template folder and replacing decorator/output resources.
 
-Alacritty will reload the colors automatically, xresources and awesomewm are reloaded via command.
-
 
 Template files:
 * Xresources
@@ -194,13 +192,8 @@ def write_new_file(filepath: str, lines: list):
 
 
 def reload_xresources():
-    # Reload linux system colors, needed for rofi, urxvt, awesome, etc...
+    # Reload linux system colors, needed for rofi, urxvt, etc...
     os.system(f"xrdb {HOME}/.Xresources")
-
-
-def reload_awesome():
-    # Reload awesome
-    os.system("echo 'awesome.restart()' | awesome-client")
 
 
 # Validate required directories exist
@@ -231,10 +224,3 @@ for path in template_files:
 # Reload environment
 if platform.system() == "Linux":
     reload_xresources()
-    if SESSION != "gnome":
-        if WMANAGER == "awesomewm":
-            reload_awesome()
-        else:
-            print(
-                "Script does not recognize the window manager - only xresources was reloaded"
-            )
