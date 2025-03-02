@@ -4,8 +4,8 @@ Description=Enable Function Keys on Keychron
 [Service]
 Type=simple
 RemainAfterExit=yes
-ExecStart=/bin/bash -c "echo 0 > /sys/module/hid_apple/parameters/fnmode"
-ExecStop=/bin/bash -c "echo 1 > /sys/module/hid_apple/parameters/fnmode"
+ExecStart=/bin/bash -c "echo 2 > /sys/module/hid_apple/parameters/fnmode"
+ExecStop=/bin/bash -c "echo 0 > /sys/module/hid_apple/parameters/fnmode"
 
 [Install]
 WantedBy=multi-user.target
