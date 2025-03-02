@@ -5,8 +5,6 @@
     - [Generic](#generic)
     - [Awesomewm](#awesomewm)
     - [Gnome](#gnome)
-    - [Qtile](#qtile)
-    - [Bspwm](#bspwm)
 <!-- TOC -->
 
 After a clean installation validate the following.
@@ -76,45 +74,3 @@ After a clean installation validate the following.
     - [ ] Runs with prime
 - [ ] Keybindings
 
-## Qtile
-
-It's an WIP, configuration is not finished.
-
-- [ ] Dual monitor
-- [ ] Intellij
-- [ ] Picom
-    - [ ] Transparency, blur and dim work
-    - [ ] Alacritty background is transparent
-- [ ] Sound works
-    - [ ] Browser
-    - [ ] Changing sound in the sidebar
-    - [ ] Mute on the bottom bar
-- [ ] Brightness
-
-## Bspwm
-
-- [ ] TODO
-- [ ] Dual monitor
-- [ ] Intellij
-- [ ] Picom
-    - [ ] Transparency, blur and dim work
-    - [ ] Alacritty background is transparent
-- [ ] Sound works
-    - [ ] Browser
-    - [ ] Changing sound in the sidebar
-    - [ ] Mute on the bottom bar
-- [ ] Brightness
-
-## Xfce
-
-- [ ] TODO
-- [ ] Nvidia GPU
-- [ ] Bluetooth
-- [ ] Steam and Proton
-    - [ ] Proton is enabled
-    - [ ] Games run
-    - [ ] Games run with prime
-- [ ] MC launcher
-    - [ ] Runs
-    - [ ] Runs with prime
-- [ ] Keybindings

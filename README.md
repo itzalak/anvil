@@ -3,9 +3,7 @@
 Personal laboratory mostly for development.
 
 WIP: Ongoing refactorings
-
-- [v7 shogun](/docs/v7-shogun.md) already merged to master
-- [v8 going postal](/xfce/docs/v8-going-postal.md) new machine
+TODO: outdated, must be refactored
 
 ## Installation
 
@@ -74,3 +72,50 @@ In `./zshrc` we load all configuration files within the `ZDOTDIR` directory endi
 ```
 
 </details>
+
+## Anvil setup
+
+Clone the anvil repository
+
+```shell
+mkdir -p foundry
+git clone git@github.com:itzalak/anvil.git foundry/anvil
+```
+
+## Minimal setup
+
+Run minimal linux installation setup manually
+
+```shell
+./foundry/anvil/installation/linux/minimal-setup.sh
+```
+
+or
+
+```shell
+curl -fsSL https://raw.githubusercontent.com/itzalak/anvil/refs/heads/main/installation/linux/minimal-setup.sh | bash
+```
+
+## Task
+
+```shell
+task: linux:awesome
+task: linux:gnome
+task: linux:qtile
+```
+
+Setup foundry
+
+```shell
+task: foundry:setup
+```
+
+## Other environments
+
+For adding a new desktop create a new user and assign to wheel group. Don't forget to add the sudo config file
+in the `sudoers.d` directory.
+
+```shell
+useradd -m -G wheel -s /bin/bash {{user}}
+sudo passwd {{user}}
+```
