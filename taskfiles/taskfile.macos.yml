@@ -26,21 +26,21 @@ tasks:
     internal: true
     prompt: WILL UPDATE MACOS DEFAULT SETTINGS, ARE YOU CERTAIN?
     cmds:
-      # TODO: This no longer works since macos last update
-      - installation/macos/macos-defaults.sh
+      - taskfiles/scripts/99-macos-defaults.sh
 
   stow:
     desc: Symlink macos packages
+    platforms: [darwin]
     cmds:
       - task: assert
         vars:
           REQUIRED_TOOLS: stow
-      - "rm -rf {{.HOME}}/.config/hypr"
       - "stow --restow --verbose --dir={{.ROOT_DIR}} --target={{.HOME}} macos"
 
 
   destow:
     desc: Destow macos packages
+    platforms: [darwin]
     cmds:
       - task: assert
         vars:
