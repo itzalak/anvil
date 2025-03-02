@@ -1,6 +1,0 @@
-require "bindings.awesome"
-require "bindings.custom"
-require "bindings.display"
-require "bindings.floating"
-require "bindings.mouse"
-require "bindings.tile"
