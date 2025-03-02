@@ -1,7 +1,0 @@
-configuration {
-    font:                 "Iosevka Nerd Font Bold 24";
-    show-icons:           true;
-    click-to-exit:        true;
-    disable-history:      true;
-    sidebar-mode:         false;
-}
