@@ -117,9 +117,8 @@ tasks:
 
   shell:
     desc: Changing the default shell to zsh
-    internal: true
     cmds:
       - echo 'Set zsh as default shell'
-      - echo 'chsh -s "$(which zsh)"'
-      - echo 'sudo chsh -s "$(which zsh)"'
+      - chsh -s "$(which zsh)"
+      - sudo chsh -s "$(which zsh)"
     silent: true
