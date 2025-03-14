@@ -13,7 +13,6 @@ end
 if type -q fzf
     set -x FZF_DEFAULT_OPTS "--style full \
         --preview 'fzf-preview.sh {}' \
-        --bind 'focus:transform-header:file --brief {}' \
         --color=gutter:#1e2030 \
         --color=header:#ff966c \
         --color=marker:#ff007c \
