@@ -26,12 +26,12 @@ repos:
         exclude: '^\.gitignore$'
 
   - repo: https://github.com/psf/black
-    rev: 24.10.0
+    rev: 25.1.0
     hooks:
       - id: black
 
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.1.0
+    rev: v4.4.1
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -41,7 +41,7 @@ repos:
           - pre-push
 
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.17.1
+    rev: v0.17.2
     hooks:
       - id: markdownlint-cli2
         args:
@@ -61,7 +61,7 @@ repos:
       - id: checkmake
 
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-    rev: '3.0.3'
+    rev: '3.2.0'
     hooks:
       - id: editorconfig-checker
         exclude: |
@@ -71,25 +71,25 @@ repos:
           )$
 
   - repo: https://github.com/python-poetry/poetry
-    rev: 2.0.0
+    rev: 2.1.1
     hooks:
       - id: poetry-check
       - id: poetry-lock
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.30.0
+    rev: 0.31.3
     hooks:
       - id: check-taskfile
       - id: check-github-workflows
 
   - repo: https://github.com/google/yamlfmt
-    rev: v0.14.0
+    rev: v0.16.0
     hooks:
       - id: yamlfmt
         args: ['-formatter', 'retain_line_breaks=true']
 
   - repo: https://github.com/scop/pre-commit-shfmt
-    rev: v3.10.0-2
+    rev: v3.11.0-1
     hooks:
       - id: shfmt
 
