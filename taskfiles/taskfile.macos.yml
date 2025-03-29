@@ -12,6 +12,19 @@ tasks:
         task --list
     silent: true
 
+  assert:
+    cmds:
+      - for:
+          var: REQUIRED_TOOLS
+          split: ','
+          as: TOOL
+        cmd: |
+          [ -n "$(which {{ .TOOL }})" ] || ( \
+            echo "ERROR: `{{ .TOOL }}` not found" && exit 1; \
+          )
+    silent: true
+    internal: true
+
   setup:
     desc: Install brew, stow, zsh and update macos defaults
     platforms: [darwin]
@@ -36,7 +49,6 @@ tasks:
         vars:
           REQUIRED_TOOLS: stow
       - "stow --restow --verbose --dir={{.ROOT_DIR}} --target={{.HOME}} macos"
-
 
   destow:
     desc: Destow macos packages
