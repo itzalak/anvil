@@ -7,10 +7,9 @@ alias gcb='git checkout -b'
 alias gcfl='git config --list'
 alias gcm='git commit -m'
 alias gco='git switch'
-alias gema='git log --pretty="%an - %ae"'
+alias gema='git log --pretty="%C(blue)[%an]%C(reset) %C(yellow)%ae%C(reset)"'
 alias glgg='git log --graph'
-alias glo="git log --graph --pretty='tformat:%C(auto)%h%d %s %C(black)%C(bold)%cL %C(green)%cr'"
-alias gloa='git log --oneline --decorate --graph --all'
+alias glo="git log --pretty=format:'%C(yellow)%h%d%C(reset) %s %C(blue)%C(bold)%cL%C(reset) %C(green)%ad%C(reset)' --date=short"
 alias gm='git switch $(git_main_branch)'
 alias gsl='git stash list'
 alias gsp='git stash pop'
